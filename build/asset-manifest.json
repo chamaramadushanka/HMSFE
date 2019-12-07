@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/HMSFE/static/css/main.29532b0e.chunk.css",
+    "main.js": "/HMSFE/static/js/main.bd36afed.chunk.js",
+    "main.js.map": "/HMSFE/static/js/main.bd36afed.chunk.js.map",
+    "runtime-main.js": "/HMSFE/static/js/runtime-main.fb17035b.js",
+    "runtime-main.js.map": "/HMSFE/static/js/runtime-main.fb17035b.js.map",
+    "static/css/2.dd9e886a.chunk.css": "/HMSFE/static/css/2.dd9e886a.chunk.css",
+    "static/js/2.6202834f.chunk.js": "/HMSFE/static/js/2.6202834f.chunk.js",
+    "static/js/2.6202834f.chunk.js.map": "/HMSFE/static/js/2.6202834f.chunk.js.map",
+    "index.html": "/HMSFE/index.html",
+    "precache-manifest.827ff7af7933e7c4e305048a9bc67367.js": "/HMSFE/precache-manifest.827ff7af7933e7c4e305048a9bc67367.js",
+    "service-worker.js": "/HMSFE/service-worker.js",
+    "static/css/2.dd9e886a.chunk.css.map": "/HMSFE/static/css/2.dd9e886a.chunk.css.map",
+    "static/css/main.29532b0e.chunk.css.map": "/HMSFE/static/css/main.29532b0e.chunk.css.map",
+    "static/media/Login.css": "/HMSFE/static/media/background.14ef0358.jpg",
+    "static/media/font-awesome.min.css": "/HMSFE/static/media/fontawesome-webfont.fee66e71.woff",
+    "static/media/logo.svg": "/HMSFE/static/media/logo.f322cb5a.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fb17035b.js",
+    "static/css/2.dd9e886a.chunk.css",
+    "static/js/2.6202834f.chunk.js",
+    "static/css/main.29532b0e.chunk.css",
+    "static/js/main.bd36afed.chunk.js"
+  ]
+}
