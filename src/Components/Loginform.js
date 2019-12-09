@@ -6,7 +6,6 @@ import styles from '../../src/css/Login.css';
 
 function LoginForm(props) {
     return (
-        <div className={styles.Main}>
             <div className="row submain">
                 <div className="Loginside1 col-xs-6 col-sm-6">
                     <h1>Hospital Management System</h1>
@@ -29,10 +28,8 @@ function LoginForm(props) {
                     </div>
                 </div>
             </div>
-        </div>
 
     );
 }
-
 
 export default LoginForm
