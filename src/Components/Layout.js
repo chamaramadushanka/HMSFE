@@ -31,7 +31,7 @@ function Dashboardnavbar() {
   return (
     <div>
       <nav class="navbar navbar-expand navbar-dark bg-dark  navbar-fixed-top">
-        <a class="navbar-brand mr-1" href="index.html">HMS-HealthLine </a>
+        <a class="navbar-brand mr-1" href="index.html">PMS - EcoBiz </a>
         <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <MenuIcon/>
         </button>
@@ -46,9 +46,6 @@ function Dashboardnavbar() {
             <button class="btn btn-primary btn-xs" type="button">
                 <SearchIcon/>
               </button></div>
-
-
-              
             </div>
           </div>
         </form>
@@ -113,23 +110,23 @@ function Wrapper() {
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-fw fa-folder"></i>
-              <span><AccessibleIcon style={{ fontSize: 25},{padding:1}}/>Patient</span>
+              <span><AccessibleIcon style={{ fontSize: 25},{padding:1}}/>Employee</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-              <Link className = "dropdown-item" to="/PatientRegistration">patient Register</Link>
-              <Link className = "dropdown-item" to="/PatientDetails">PatientDetails</Link>
-              <a class="dropdown-item" href="forgot-password.html">Prescription</a>
+              {/* <Link className = "dropdown-item" to="/PatientRegistration">patient Register</Link> */}
+              <Link className = "dropdown-item" to="/EmployeeDetails">EmployeeDetails</Link>
+              <a class="dropdown-item" href="forgot-password.html">xxxx</a>
               <a class="dropdown-item" href="forgot-password.html">xxxx</a>
             </div>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               
-              <span><AddBoxIcon style={{ fontSize: 18},{padding:1}}/>Doctor</span>
+              <span><AddBoxIcon style={{ fontSize: 18},{padding:1}}/>Employer</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-              <Link className = "dropdown-item" to="/Docregistration">Doctor Register</Link>
-              <Link className = "dropdown-item" to="/doctordetails">Doctor Details</Link>
+              <Link className = "dropdown-item" to="/Docregistration">xxxx Register</Link>
+              <Link className = "dropdown-item" to="/doctordetails">xxxx Details</Link>
             </div>
           </li>
           <li class="nav-item dropdown">

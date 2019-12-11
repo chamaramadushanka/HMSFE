@@ -12,8 +12,8 @@ import {
 function App() {
       return (
             <Router>
-                  <Route path="/" component={Layout}></Route>
                   <Route exact path="/Loginform" component={LoginForm}></Route>
+                  <Route path="/" component={Layout}></Route>
                   <Route path="/Parent" component={Parent}></Route>
             </Router>
       );

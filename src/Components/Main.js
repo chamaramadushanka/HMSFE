@@ -10,6 +10,7 @@ import Background from './Background';
 import DoctorDetails from './DoctorDetails';
 import Loginform from './Loginform';
 import Docregistration from './DoctorRegistration';
+import EmployeeDetails from './EmployeeDetails';
 
 const Main = () =>(
   <Switch>
@@ -20,6 +21,8 @@ const Main = () =>(
     <Route path="/Background" component={Background}></Route>
     <Route path="/Doctordetails" component={DoctorDetails}></Route>
     <Route path="/Docregistration" component={Docregistration}></Route>
+    <Route path="/Docregistration" component={Docregistration}></Route>
+    <Route path="/EmployeeDetails" component={EmployeeDetails}></Route>
   </Switch>
 )
 

@@ -8,8 +8,8 @@ function LoginForm(props) {
     return (
             <div className="row submain">
                 <div className="Loginside1 col-xs-6 col-sm-6">
-                    <h1>Hospital Management System</h1>
-                    <h4>Make Your Customers Happier</h4>
+                    <h1>Payroll Management System</h1>
+                    <h4>Make Your Employees Happier</h4>
                 </div>
 
                 <div className="Form col-xs-6 col-sm-6">
