@@ -117,7 +117,7 @@ function Wrapper() {
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
               {/* <Link className = "dropdown-item" to="/PatientRegistration">patient Register</Link> */}
               <Link className = "dropdown-item" to="/EmployeeDetails">EmployeeDetails</Link>
-              <a class="dropdown-item" href="forgot-password.html">Overtime</a>
+              <Link className = "dropdown-item" to="/OvertimeDetails">Overtime</Link>
               <a class="dropdown-item" href="forgot-password.html">Cash Advance</a>
               <a class="dropdown-item" href="forgot-password.html">Shedules</a>
             </div>

@@ -44,17 +44,16 @@ export class EmployeeRegPop extends Component {
             // Gender:event.target.Gender.value,
             RegistrationNo:event.target.RegistrationNo.value,
             CreatedOn:event.target.CreatedOn.value,
-            PoistionId:event.target.PoistionId.value,
+            PoistionId:new Number(event.target.PoistionId.value),
           })
         })
         .then(res=>res.json())
         .then((result)=>
         {
-             alert(result)
-            this.setState({SnackbarOpen:true, Snackbarmsg:"Added Successfully"})
+             alert("Successfully Added")
         },
         (error)=>{
-          this.setState({SnackbarOpen:true, Snackbarmsg:"failed"})
+          alert("Creation Failed")
         })
     }
     render() {

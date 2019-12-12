@@ -5,18 +5,18 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 
 
-export class AddAttendence extends Component {
+export class Overtimeadd extends Component {
     constructor(props) {
         super(props);
-        this.state = {Attendances:[],Snackbaropen:false,Snackbarmsg:''}
+        this.state = {OverTimes:[],Snackbaropen:false,Snackbarmsg:''}
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount(){
-      fetch('https://localhost:44355/api/Attendances')
+      fetch('http://localhost:59388/api/OverTimes')
       .then(response => response.json())
       .then(data =>{
-        this.setState({Attendances:data});
+        this.setState({OverTimes:data});
       });
     }
 
@@ -27,7 +27,7 @@ export class AddAttendence extends Component {
 
     handleSubmit(event){
       event.preventDefault();
-        fetch('https://localhost:44355/api/Attendances',{
+        fetch('http://localhost:59388/api/OverTimes',{
           method:'POST',
           headers: {
             'Accept': 'application/json',
@@ -36,10 +36,9 @@ export class AddAttendence extends Component {
           },
           body:JSON.stringify({
             // positionId:null,
-            // attendanceId:event.attendanceId.value,
-            dateTime:event.target.dateTime.value,
-            employee:event.target.employee.value,
-            employeeId:event.target.employeeId.value
+            additionalHours:new Number (event.target.additionalHours.value),
+            amount:new Number (event.target.amount.value),
+            employeeId:new Number(event.target.employeeId.value),
             // Salaryrate:event.target.Address.value,
             
           })
@@ -48,16 +47,14 @@ export class AddAttendence extends Component {
         .then((result)=>
         {
              alert("Added Successfully")
-            this.setState({SnackbarOpen:true, Snackbarmsg:"Added Successfully"})
         },
         (error)=>{
-          this.setState({SnackbarOpen:true, Snackbarmsg:"failed"})
+            alert("Added Failed")
         })
     }
     render() {
         return (
           <div className ="container">
-          
             {/* Pop up Modal Start */}
             <Modal
               {...this.props}
@@ -67,7 +64,7 @@ export class AddAttendence extends Component {
             >
               <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                  Add Attendence
+                  Add OverTime
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
@@ -76,37 +73,39 @@ export class AddAttendence extends Component {
                 <Col sm= {6}>
                     <Form onSubmit ={this.handleSubmit}>
 
-                        <Form.Group controlId ="dateTime">
-                        <Form.Label> Attendence Date</Form.Label>
-                        <Form .Control
-                        type ="Date"
-                        name = "dateTime"
-                        required
-                        placeholder ="Attendence Date"
-                        />
-                        </Form.Group>
-                        
-                        <Form.Group controlId ="employee">
-                        <Form.Label>Employee Id</Form.Label>
+                        <Form.Group controlId ="employeeId">
+                        <Form.Label> Employee Id</Form.Label>
                         <Form .Control
                         type ="text"
-                        name = "employee"
-                        placeholder ="Description"
+                        name = "employeeId"
+                        required
+                        placeholder ="Employee Id"
                         />
                         </Form.Group>
 
-                        <Form.Group controlId ="Salaryrate">
-                        <Form.Label>Salary Rate</Form.Label>
+                        <Form.Group controlId ="additionalHours">
+                        <Form.Label> Additional Hours</Form.Label>
                         <Form .Control
                         type ="number"
-                        name = "Salaryrate"
-                        placeholder ="Salary Rate"
+                        name = "additionalHours"
+                        required
+                        placeholder ="Additional Hours"
                         />
                         </Form.Group>
                         
+                        <Form.Group controlId ="amount">
+                        <Form.Label>Amount</Form.Label>
+                        <Form .Control
+                        type ="number"
+                        name = "amount"
+                        placeholder ="Amount"
+                        />
+                        </Form.Group>
+
+                        
                         <Form.Group>
                         <Button variant ="primary" type = "submit">
-                        Add Employee</Button>
+                        Add OverTime</Button>
                         </Form.Group>
                     </Form>
                 </Col>
@@ -121,4 +120,4 @@ export class AddAttendence extends Component {
     }
 }
 
-export default AddAttendence
+export default Overtimeadd

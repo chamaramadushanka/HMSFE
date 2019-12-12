@@ -25,7 +25,7 @@ export class Positionedit extends Component {
       },
       //convert to json and get data from the fields
       body: JSON.stringify({
-        positionId: event.target.positionId.value,
+        // positionId: event.target.positionId.value,
         name: event.target.name.value,
         description: event.target.description.value,
         //   salaryrate:event.target.salaryrate.value,
@@ -35,37 +35,18 @@ export class Positionedit extends Component {
 
       .then(res => res.json())
       .then((result) => {
-        //   alert("Added Successfully")
-        this.setState({ SnackbarOpen: true, Snackbarmsg: result })
+          alert("Updated Successfully")
+        
       },
         (error) => {
-          this.setState({ SnackbarOpen: true, Snackbarmsg: "failed" })
+          alert("Update Failed")
         })
   }
   //render methods and fields
   render() {
     return (
       <div className="container">
-        {/* Snack bar to show the result but not working */}
-        <Snackbar
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-          open={this.state.Snackbaropen}
-          autoHideDuration={3000}
-          onClose={this.SnackbarClose}
-          message={<span id="message-id">{this.state.Snackbarmsg}</span>}
-          action={[
-            <IconButton
-              key="close"
-              arial-label="Close"
-              color="inherit"
-              onClick={this.SnackbarClose}>
-              x
-          </IconButton>
-          ]}
-        />
-        {/* snack bar end */}
-
-        {/* Pop up Modal to edit the position */}
+        
         <Modal
           {...this.props}
           size="lg"
@@ -90,7 +71,7 @@ export class Positionedit extends Component {
                       type="text"
                       name="positionId"
                       required
-                      disable
+                      disabled
                       defaultValue={this.props.positionId}
                       placeholder="position Id"
                     />

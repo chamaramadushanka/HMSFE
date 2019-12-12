@@ -65,7 +65,6 @@ export class Positions extends Component {
                             <th>Description</th>
                             {/* <th>Salary Rate</th> */}
                             <th>Options</th>
-
                         </tr>
                     </thead>
                     <tbody>

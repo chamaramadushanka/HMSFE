@@ -122,7 +122,7 @@ export class PositionsRegPop extends Component {
                         
                         <Form.Group>
                         <Button variant ="primary" type = "submit">
-                        Add Employee</Button>
+                        Add Position</Button>
                         </Form.Group>
                     </Form>
                 </Col>

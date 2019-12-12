@@ -1,7 +1,6 @@
 import React from 'react';
 import LoginForm from './Components/Loginform';
 import Layout from './Components/Layout';
-import Parent from './Tests/Parent';
 import {
       BrowserRouter as Router,
       Switch,
@@ -14,7 +13,6 @@ function App() {
             <Router>
                   <Route exact path="/Loginform" component={LoginForm}></Route>
                   <Route path="/" component={Layout}></Route>
-                  <Route path="/Parent" component={Parent}></Route>
             </Router>
       );
 }

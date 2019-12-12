@@ -39,7 +39,7 @@ DeleteEmployee(id){
   }
 
    render() {
-       const {Employees,id,FirstName,LastName,Address,Birthdate,ContactInfo,Gender,RegistrationNo,CreatedOn,PoistionId} = this.state;
+       const {Employees,employeeId,FirstName,LastName,Address,Birthdate,ContactInfo,Gender,RegistrationNo,CreatedOn,positionName} = this.state;
        let addModalClose =() => this.setState({addModalShow:false});
        let EmployeeeditClose =() => this.setState({EmployeeeditShow:false});
        return (
@@ -62,30 +62,30 @@ DeleteEmployee(id){
                            <th>Employee Id</th>
                            <th>Name</th>
                            <th>Registration No</th>
+                           <th>Position</th>
                            <th>Address</th>
                            <th>Contact Info</th>
                            <th>Created On</th>
-                           <th>Position</th>
-                           {/* <th>Birthdate</th> */}
                            <th>Options</th>
                        </tr>
                    </thead>
                    <tbody>
                        {Employees.map(Employees =>
-                        <tr  key ={Employees.id}>
-                                <td>{Employees.id}</td>
+                        <tr  key ={Employees.employeeId}>
+                                <td>{Employees.employeeId}</td>
                                <td>{Employees.firstName} {Employees.lastName}</td>
                                <td>{Employees.registrationNo}</td>
+                               <td>{Employees.positionName}</td>
                                <td>{Employees.address}</td>
                                <td>{Employees.contactInfo}</td>
                                <td>{Employees.createdOn}</td>
-                               <td>{Employees.position}</td>
+                               
                                {/* <td>{Employees.Birthdate}</td> */}
                                <td>
                                    <ButtonToolbar>
                                        <Button className = "mr-2" variant ="info"
                                     onClick={()=>this.setState({EmployeeeditShow:true,
-                                        id:Employees.id,
+                                        id:Employees.employeeId,
                                         FirstName:Employees.firstName,
                                         LastName:Employees.lastName,
                                         RegistrationNo:Employees.registrationNo,
@@ -94,15 +94,15 @@ DeleteEmployee(id){
                                         Address:Employees.address,
                                         // Birthdate:Employees.Birthdate,
                                         Gender:Employees.gender,
-                                        PosiitionId:Employees.PoistionId
+                                        PosiitionId:Employees.positionName
                                         })}
                                        >Edit</Button>
 
-                                       <Button className="mr-2"  onClick = {()=>this.DeleteEmployee(Employees.id)} variant ="danger">Delete</Button>
+                                       <Button className="mr-2"  onClick = {()=>this.DeleteEmployee(Employees.employeeId)} variant ="danger">Delete</Button>
                                        <Employeeedit
                                            show={this.state.EmployeeeditShow}
                                             onHide ={EmployeeeditClose}
-                                            id  = {id}
+                                            id  = {employeeId}
                                             FirstName  = {FirstName}
                                             LastName = {LastName}
                                             RegistrationNo = {RegistrationNo}
@@ -111,7 +111,7 @@ DeleteEmployee(id){
                                             Address = {Address}
                                             Gender = {Gender}
                                             Birthdate = {Birthdate}
-                                            PoistionId = {PoistionId}
+                                            PoistionId = {positionName}
                                        />
                                    </ButtonToolbar>
                                </td>

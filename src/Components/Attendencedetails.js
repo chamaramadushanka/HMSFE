@@ -9,7 +9,7 @@ export class Attendencedetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Positions: [], PositioneditShow: false, PositionsRegPop: false
+            Attendances: [], PositioneditShow: false, PositionsRegPop: false
         }
     }
     componentWillMount() {
@@ -17,18 +17,18 @@ export class Attendencedetails extends Component {
     }
 
     refresList() {
-        fetch('http://localhost:59388/api/positions')
+        fetch('https://localhost:44355/api/Attendances')
             .then(Response => Response.json())
             .then(data => {
-                this.setState({ Positions: data });
+                this.setState({ Attendances: data });
             });
     }
     //    componentDidUpdate(){
     //     this.refresList();
     // }
-    DeletePosition(positionId) {
+    DeletePosition(attendanceId) {
         if (window.confirm('Are you sure? ')) {
-            fetch('http://localhost:59388/api/positions/' + positionId, {
+            fetch('https://localhost:44355/api/Attendances/' + attendanceId, {
                 method: 'DELETE',
                 headers: {
                     'Accept': 'application/json',
@@ -40,17 +40,17 @@ export class Attendencedetails extends Component {
     }
 
     render() {
-        const { Positions, positionId, name, description } = this.state;
+        const { Attendances, positionId, name, description } = this.state;
         let addModalClose = () => this.setState({ addModalShow: false });
         let PositioneditClose = () => this.setState({ PositioneditShow: false });
         return (
             <div className="patientdetailstable">
-                <h4>Position Details</h4>
+                <h4>Attendence Details</h4>
                 <ButtonToolbar>
                     <Button variant='primary'
                         onClick={() => this.setState({ addModalShow: true })}
                     >
-                        Add Position
+                        Add Attendence
                     </Button>
                     <PositionsRegPop
                         show={this.state.addModalShow}
@@ -60,20 +60,21 @@ export class Attendencedetails extends Component {
                 <Table className="mt-4" striped bordered hover size="sm">
                     <thead>
                         <tr>
-                            <th>Position Id</th>
-                            <th>Position Name</th>
-                            <th>Description</th>
+                            <th>Employee Id</th>
+                            <th>Attendence Id</th>
+                            <th>Attendence Date</th>
                             {/* <th>Salary Rate</th> */}
                             <th>Options</th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        {Positions.map(Positions =>
-                            <tr key={Positions.positionId}>
-                                <td>{Positions.positionId}</td>
-                                <td>{Positions.name}</td>
-                                <td>{Positions.description}</td>
+                        {Attendances.map(Attendances =>
+                            <tr key={Attendances.attendanceId}>
+                                <td>{Attendances.employeeId}</td>
+                                <td>{Attendances.attendanceId}</td>
+                                <td>{Attendances.dateTime}</td>
+                                
                                 {/* <td>{Positions.Salaryrate}</td> */}
                                 <td>
 
@@ -82,15 +83,15 @@ export class Attendencedetails extends Component {
                                         <Button className="mr-2" variant="info"
                                             onClick={() => this.setState({
                                                 PositioneditShow: true,
-                                                positionId: Positions.positionId,
-                                                name: Positions.name,
-                                                description: Positions.description,
-                                                Salaryrate: Positions.Salaryrate,
+                                                positionId: Attendances.attendanceId,
+                                                name: Attendances.dateTime,
+                                                description: Attendances.employee,
+                                                Salaryrate: Attendances.employeeId,
                                             })}
                                         >Edit</Button>
 
                                         {/* Delete Section */}
-                                        <Button className="mr-2" onClick={() => this.DeletePosition(Positions.positionId)} variant="danger">Delete</Button>
+                                        <Button className="mr-2" onClick={() => this.DeletePosition(Attendances.attendanceId)} variant="danger">Delete</Button>
 
                                         {/* Getting edit components to the positions */}
                                         <Positionedit
