@@ -14,7 +14,7 @@ class  EmployeeDetails extends Component {
    componentWillMount(){
        this.refresList();
    }
-   
+
    refresList(){
         fetch('http://localhost:59388/api/employees')
         .then(Response =>Response.json())
@@ -43,7 +43,7 @@ DeleteEmployee(id){
        let addModalClose =() => this.setState({addModalShow:false});
        let EmployeeeditClose =() => this.setState({EmployeeeditShow:false});
        return (
-           <div className = "patientdetailstable"> 
+           <div className = "patientdetailstable">
                <h4>Employee Details</h4>
                <ButtonToolbar>
                     <Button variant = 'primary'
@@ -65,8 +65,9 @@ DeleteEmployee(id){
                            <th>Address</th>
                            <th>Contact Info</th>
                            <th>Created On</th>
-                           <th>Birthdate</th>
-                           <th>Option</th>
+                           <th>Position</th>
+                           {/* <th>Birthdate</th> */}
+                           <th>Options</th>
                        </tr>
                    </thead>
                    <tbody>
@@ -78,11 +79,12 @@ DeleteEmployee(id){
                                <td>{Employees.address}</td>
                                <td>{Employees.contactInfo}</td>
                                <td>{Employees.createdOn}</td>
-                               <td>{Employees.Birthdate}</td>
+                               <td>{Employees.position}</td>
+                               {/* <td>{Employees.Birthdate}</td> */}
                                <td>
                                    <ButtonToolbar>
-                                       <Button className = "mr-e" variant ="info"
-                                    onClick={()=>this.setState({EmployeeeditShow:true, 
+                                       <Button className = "mr-2" variant ="info"
+                                    onClick={()=>this.setState({EmployeeeditShow:true,
                                         id:Employees.id,
                                         FirstName:Employees.firstName,
                                         LastName:Employees.lastName,
@@ -90,13 +92,13 @@ DeleteEmployee(id){
                                         ContactInfo:Employees.contactInfo,
                                         CreatedOn:Employees.CreatedOn,
                                         Address:Employees.address,
-                                        Birthdate:Employees.Birthdate,
+                                        // Birthdate:Employees.Birthdate,
                                         Gender:Employees.gender,
                                         PosiitionId:Employees.PoistionId
                                         })}
                                        >Edit</Button>
 
-                                       <Button className = "mr-2" onClick = {()=>this.DeleteEmployee(Employees.id)} variant ="danger">Delete</Button>
+                                       <Button className="mr-2"  onClick = {()=>this.DeleteEmployee(Employees.id)} variant ="danger">Delete</Button>
                                        <Employeeedit
                                            show={this.state.EmployeeeditShow}
                                             onHide ={EmployeeeditClose}

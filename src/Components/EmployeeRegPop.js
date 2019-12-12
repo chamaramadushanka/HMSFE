@@ -8,8 +8,16 @@ import IconButton from '@material-ui/core/IconButton';
 export class EmployeeRegPop extends Component {
     constructor(props) {
         super(props);
-        this.state = {Snackbaropen:false,Snackbarmsg:''}
+        this.state = {positions:[],Snackbaropen:false,Snackbarmsg:''}
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount(){
+      fetch('http://localhost:59388/api/positions')
+      .then(response => response.json())
+      .then(data =>{
+        this.setState({positions:data});
+      });
     }
 
     SnackbarClose = (event)=>{
@@ -33,7 +41,7 @@ export class EmployeeRegPop extends Component {
             Address:event.target.Address.value,
             Birthdate:event.target.Birthdate.value,
             ContactInfo:event.target.ContactInfo.value,
-            Gender:event.target.Gender.value,
+            // Gender:event.target.Gender.value,
             RegistrationNo:event.target.RegistrationNo.value,
             CreatedOn:event.target.CreatedOn.value,
             PoistionId:event.target.PoistionId.value,
@@ -126,6 +134,15 @@ export class EmployeeRegPop extends Component {
                         />
                         </Form.Group>
 
+                        <Form.Group controlId ="PoistionId">
+                        <Form.Label>Position Id</Form.Label>
+                          <Form.Control as="select">
+                            {this.state.positions.map(position =>
+                              <option key ={position.PoistionId}>{position.name}</option>
+                            )}
+                          </Form.Control>
+                        </Form.Group>
+                        
                         <Form.Group controlId ="Gender">
                         <Form.Label>Gender</Form.Label>
                         <Form .Control
@@ -161,14 +178,6 @@ export class EmployeeRegPop extends Component {
                         />
                         </Form.Group>
 
-                        <Form.Group controlId ="PoistionId">
-                        <Form.Label>Position Id</Form.Label>
-                        <Form .Control
-                        type ="int"
-                        name = "PoistionId"
-                        placeholder ="Position Id"
-                        />
-                        </Form.Group>
                         </Form.Group>
                         <Form.Group>
                         <Button variant ="primary" type = "submit">

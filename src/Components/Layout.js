@@ -8,15 +8,18 @@ import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import EmailIcon from '@material-ui/icons/Email';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import SearchIcon from '@material-ui/icons/Search';
-
-import AccessibleIcon from '@material-ui/icons/Accessible';
+import StreetviewIcon from '@material-ui/icons/Streetview';
 import AddBoxIcon from '@material-ui/icons/AddBox';
+import PersonPinIcon from '@material-ui/icons/PersonPin';
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import PlayForWorkIcon from '@material-ui/icons/PlayForWork';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link
   } from "react-router-dom";
+import { faStreetView } from '@fortawesome/free-solid-svg-icons';
 
 function Layout() {
   return (
@@ -33,7 +36,7 @@ function Dashboardnavbar() {
       <nav class="navbar navbar-expand navbar-dark bg-dark  navbar-fixed-top">
         <a class="navbar-brand mr-1" href="index.html">PMS - EcoBiz </a>
         <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <MenuIcon/>
+        <MenuIcon className = "ml-5"/>
         </button>
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
           <div class="input-group">
@@ -105,50 +108,44 @@ function Wrapper() {
                 alignItems: 'center'
                 }}><DashboardIcon style={{ fontSize: 18},{padding:2}}/>Dashboard</div></Link>
               </span>
-            
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" >
             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-fw fa-folder"></i>
-              <span><AccessibleIcon style={{ fontSize: 25},{padding:1}}/>Employee</span>
+              
+              <span><StreetviewIcon style={{ fontSize: 25},{padding:1}}/>Employee</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
               {/* <Link className = "dropdown-item" to="/PatientRegistration">patient Register</Link> */}
               <Link className = "dropdown-item" to="/EmployeeDetails">EmployeeDetails</Link>
-              <a class="dropdown-item" href="forgot-password.html">xxxx</a>
-              <a class="dropdown-item" href="forgot-password.html">xxxx</a>
+              <a class="dropdown-item" href="forgot-password.html">Overtime</a>
+              <a class="dropdown-item" href="forgot-password.html">Cash Advance</a>
+              <a class="dropdown-item" href="forgot-password.html">Shedules</a>
             </div>
+            <span><Link class = "nav-link" to="/Attendencedetails" style={{ textDecoration: 'none', backgroundColor: "#000"}}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center'
+                }}><DateRangeIcon style={{ fontSize: 18},{padding:2}}/>Attendence</div></Link>
+              </span>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              
-              <span><AddBoxIcon style={{ fontSize: 18},{padding:1}}/>Employer</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-              <Link className = "dropdown-item" to="/Docregistration">xxxx Register</Link>
-              <Link className = "dropdown-item" to="/doctordetails">xxxx Details</Link>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-fw fa-folder"></i>
-              <span><SupervisorAccountIcon style={{ fontSize: 18},{padding:1}}/>Master</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-              <a class="dropdown-item" href="login.html">Test Register</a>
-              <a class="dropdown-item" href="register.html">Medicine Details</a>
-            </div>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="charts.html">
               <i class="fas fa-fw fa-chart-area"></i>
-              <span>Charts</span></a>
+              <span><PlayForWorkIcon style={{ fontSize: 25},{padding:1}}/>Deductions</span>
+              </a>
           </li>
+          
           <li class="nav-item">
-            <a class="nav-link" href="tables.html">
-              <i class="fas fa-fw fa-table"></i>
-              <span>Tables</span></a>
+              <span><Link class = "nav-link" to="/Positions" style={{ textDecoration: 'none' }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center'
+                }}><PersonPinIcon style={{ fontSize: 25},{padding:1}}/>Positions</div></Link>
+              </span>
           </li>
+          
+          
         </ul>
          <Main/> 
       </div>

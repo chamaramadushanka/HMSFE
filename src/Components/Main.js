@@ -11,6 +11,9 @@ import DoctorDetails from './DoctorDetails';
 import Loginform from './Loginform';
 import Docregistration from './DoctorRegistration';
 import EmployeeDetails from './EmployeeDetails';
+import { Positions } from './Positions';
+import { AddAttendence } from './AddAttendence';
+import { Attendencedetails } from './Attendencedetails';
 
 const Main = () =>(
   <Switch>
@@ -23,6 +26,9 @@ const Main = () =>(
     <Route path="/Docregistration" component={Docregistration}></Route>
     <Route path="/Docregistration" component={Docregistration}></Route>
     <Route path="/EmployeeDetails" component={EmployeeDetails}></Route>
+    <Route path="/Positions" component={Positions}></Route>
+    <Route path="/AddAttendence" component={AddAttendence}></Route>
+    <Route path="/Attendencedetails" component={Attendencedetails}></Route>
   </Switch>
 )
 
