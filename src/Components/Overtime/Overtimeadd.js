@@ -20,10 +20,7 @@ export class Overtimeadd extends Component {
       });
     }
 
-    SnackbarClose = (event)=>{
-    this.setState({Snackbaropen:false,
-    })
-  }
+
 
     handleSubmit(event){
       event.preventDefault();

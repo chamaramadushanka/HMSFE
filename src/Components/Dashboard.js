@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { Component } from 'react'
+import {Redirect} from 'react-router-dom';
 
-function Dashboard() {
+export class Dashboard extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+    }
+  }
+  
+  render(){
+    if(this.state.loggedIn===false){
+      return <Redirect to ="/loginform"/>
+    }
     return (
         <div id = "content-wrapper">
           <div id="content-wrapper">
@@ -142,6 +154,7 @@ function Dashboard() {
         </div>
         </div>
     )
+}
 }
 
 export default Dashboard

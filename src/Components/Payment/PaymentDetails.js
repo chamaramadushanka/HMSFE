@@ -5,11 +5,11 @@ import { PositionsRegPop } from './PositinsRegPop';
 import { Positionedit } from './Positionedit';
 
 
-export class Attendencedetails extends Component {
+export class PaymentDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Attendances: [], PositioneditShow: false, PositionsRegPop: false
+            Payments: [], PositioneditShow: false, PositionsRegPop: false
         }
     }
     componentWillMount() {
@@ -20,7 +20,7 @@ export class Attendencedetails extends Component {
         fetch('https://localhost:44355/api/Attendances')
             .then(Response => Response.json())
             .then(data => {
-                this.setState({ Attendances: data });
+                this.setState({ Payments: data });
             });
     }
     //    componentDidUpdate(){
@@ -40,17 +40,17 @@ export class Attendencedetails extends Component {
     }
 
     render() {
-        const { Attendances, positionId, name, description } = this.state;
+        const { Payments, positionId, name, description } = this.state;
         let addModalClose = () => this.setState({ addModalShow: false });
         let PositioneditClose = () => this.setState({ PositioneditShow: false });
         return (
             <div className="patientdetailstable">
-                <h4>Attendence Details</h4>
+                <h4>Cash Advances Details</h4>
                 <ButtonToolbar>
                     <Button variant='primary'
                         onClick={() => this.setState({ addModalShow: true })}
                     >
-                        Add Attendence
+                        Add Cash Advance
                     </Button>
                     <PositionsRegPop
                         show={this.state.addModalShow}
@@ -60,20 +60,20 @@ export class Attendencedetails extends Component {
                 <Table className="mt-4" striped bordered hover size="sm">
                     <thead>
                         <tr>
+                            <th>Payment Id</th>
                             <th>Employee Id</th>
-                            <th>Attendence Id</th>
-                            <th>Attendence Date</th>
-                            {/* <th>Salary Rate</th> */}
+                            <th>Payment Date</th>
+                            <th>Amount Paidsq</th>
                             <th>Options</th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        {Attendances.map(Attendances =>
-                            <tr key={Attendances.attendanceId}>
-                                <td>{Attendances.employeeId}</td>
-                                <td>{Attendances.attendanceId}</td>
-                                <td>{Attendances.dateTime}</td>
+                        {Payments.map(Payments =>
+                            <tr key={Payments.attendanceId}>
+                                <td>{Payments.employeeId}</td>
+                                <td>{Payments.attendanceId}</td>
+                                <td>{Payments.dateTime}</td>
                                 
                                 {/* <td>{Positions.Salaryrate}</td> */}
                                 <td>
@@ -83,10 +83,10 @@ export class Attendencedetails extends Component {
                                         <Button className="mr-2" variant="info"
                                             onClick={() => this.setState({
                                                 PositioneditShow: true,
-                                                positionId: Attendances.attendanceId,
-                                                name: Attendances.dateTime,
-                                                description: Attendances.employee,
-                                                Salaryrate: Attendances.employeeId,
+                                                positionId: Payments.attendanceId,
+                                                name: Payments.dateTime,
+                                                description: Payments.employee,
+                                                Salaryrate: Payments.employeeId,
                                             })}
                                         >Edit</Button>
 
@@ -112,5 +112,5 @@ export class Attendencedetails extends Component {
     }
 }
 
-export default Attendencedetails
+export default PaymentDetails
 

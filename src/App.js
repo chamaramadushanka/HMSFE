@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginForm from './Components/Loginform';
 import Layout from './Components/Layout';
+import Auth from './Components/Auth/Auth';
 import {
       BrowserRouter as Router,
       Switch,

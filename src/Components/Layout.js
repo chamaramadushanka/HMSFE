@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../../src/css/Admin.css';
 import Main from '../Components/Main';
 import DashboardIcon from '@material-ui/icons/Dashboard';
@@ -13,6 +13,9 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import PlayForWorkIcon from '@material-ui/icons/PlayForWork';
+import Navbar from 'react-bootstrap/Navbar'
+import {Redirect} from 'react-router-dom';
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -21,7 +24,26 @@ import {
   } from "react-router-dom";
 import { faStreetView } from '@fortawesome/free-solid-svg-icons';
 
-function Layout() {
+export class Layout extends Component {
+  constructor(props) {
+    super(props)
+    const token = localStorage.getItem("token")
+
+    let loggedIn = true
+
+    if(token==null){
+      loggedIn= false
+    }
+
+    this.state = {
+       loggedIn
+    }
+  }
+
+  render(){
+    if(this.state.loggedIn===false){
+      return <Redirect to ="/loginform"/>
+    }
   return (
     <div className = "Layout">
       <Dashboardnavbar />
@@ -29,8 +51,34 @@ function Layout() {
     </div>
   )
 }
+}
 
-function Dashboardnavbar() {
+
+class Dashboardnavbar extends Component{
+  constructor(props) {
+    super(props)
+    this.logout = this.logout.bind(this);
+
+    const token = localStorage.getItem("token")
+    
+    let loggedIn = true
+    
+    if(token==null){
+      loggedIn= false
+    }
+    
+    this.state = {
+      loggedIn
+    }
+  }
+  logout() {
+    localStorage.removeItem("token")
+    if(this.state.loggedIn===false){
+      return <Redirect to ="/loginform"/>
+    }
+  }
+  
+  render(){
   return (
     <div>
       <nav class="navbar navbar-expand navbar-dark bg-dark  navbar-fixed-top">
@@ -86,7 +134,7 @@ function Dashboardnavbar() {
               <a class="dropdown-item" href="#">Settings</a>
               <a class="dropdown-item" href="#">Activity Log</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+              <a class="dropdown-item" href="#" onClick={this.logout} data-toggle="modal" data-target="#logoutModal">Logout</a>
             </div>
           </li>
         </ul>
@@ -94,11 +142,15 @@ function Dashboardnavbar() {
     </div>
   );
 }
+}
+
 
 function Wrapper() {
   return (
     <div>
+    
       <div id="wrapper">
+      
         {/* <!-- Sidebar --> */}
         <ul class="sidebar navbar-nav">
           <li class="nav-item active">
@@ -144,11 +196,10 @@ function Wrapper() {
                 }}><PersonPinIcon style={{ fontSize: 25},{padding:1}}/>Positions</div></Link>
               </span>
           </li>
-          
-          
         </ul>
          <Main/> 
       </div>
+      
     </div>
   )
 }

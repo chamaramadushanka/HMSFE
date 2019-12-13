@@ -27,7 +27,7 @@ export class OvertimeDetails extends Component {
     
 
     render() {
-        const { OverTimes, overTimeId, additionalHours, amount,employee,employeeId } = this.state;
+        const { OverTimes, overTimeId, additionalHours, amount,employeeId } = this.state;
         let OvertimeaddClose = () => this.setState({ OvertimeaddShow: false });
         let OverTimeEditClose = () => this.setState({ OverTimeEditShow: false });
         return (
@@ -47,7 +47,6 @@ export class OvertimeDetails extends Component {
                 <Table className="mt-4" striped bordered hover size="sm">
                     <thead>
                         <tr>
-                        
                            <th>overTimeId</th>
                            <th>EmployeeId</th>
                            <th>Employee Name</th>
@@ -70,26 +69,24 @@ export class OvertimeDetails extends Component {
                                     <ButtonToolbar>
                                         <Button className="mr-2" variant="info"
                                             onClick={() => this.setState({
-                                                PositioneditShow: true,
-                                                positionId: OverTimes.overTimeId,
-                                                name: OverTimes.employeeId,
-                                                description: OverTimes.employeeId,
-                                                Salaryrate: OverTimes.amount,
+                                                OverTimeEditShow: true,
+                                                overTimeId: OverTimes.overTimeId,
+                                                employeeId: OverTimes.employeeId,
+                                                additionalHours: OverTimes.additionalHours,
+                                                amount: OverTimes.amount,
                                             })}
                                         >Edit</Button>
 
-                                        {/* Delete Section */}
-                                        {/* <Button className="mr-2" onClick={() => this.DeletePosition(OverTimes.overTimeId)} variant="danger">Delete</Button> */}
-
+                                      
                                         {/* Getting edit components to the positions */}
-                                        {/* <OverTimeEdit
+                                        <OverTimeEdit
                                             show={this.state.OverTimeEditShow}
                                             onHide={OverTimeEditClose}
                                             overTimeId={overTimeId}
                                             amount={amount}
-                                            employee={employee}
-                                            employeeId={employee}
-                                        /> */}
+                                            employeeId={employeeId}
+                                            additionalHours={additionalHours}
+                                        />
                                     </ButtonToolbar>
                                 </td>
                             </tr>
