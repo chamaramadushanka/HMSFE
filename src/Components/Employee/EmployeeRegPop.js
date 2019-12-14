@@ -41,10 +41,10 @@ export class EmployeeRegPop extends Component {
             Address:event.target.Address.value,
             Birthdate:event.target.Birthdate.value,
             ContactInfo:event.target.ContactInfo.value,
-            // Gender:event.target.Gender.value,
+            Gender:event.target.Gender.value,
             RegistrationNo:event.target.RegistrationNo.value,
             CreatedOn:event.target.CreatedOn.value,
-            PoistionId:new Number(event.target.PoistionId.value),
+            PositionId:event.target.PositionId.value,
           })
         })
         .then(res=>res.json())
@@ -133,11 +133,11 @@ export class EmployeeRegPop extends Component {
                         />
                         </Form.Group>
 
-                        <Form.Group controlId ="PoistionId">
+                        <Form.Group controlId ="PositionId">
                         <Form.Label>Position Id</Form.Label>
                           <Form.Control as="select">
                             {this.state.positions.map(position =>
-                              <option key ={position.PoistionId}>{position.name}</option>
+                              <option key = {position.positionId}  value = {position.positionId}>{position.name}</option>
                             )}
                           </Form.Control>
                         </Form.Group>

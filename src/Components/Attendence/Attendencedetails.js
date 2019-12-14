@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 import { Button, ButtonToolbar } from 'react-bootstrap';
-import { PositionsRegPop } from '../Positions/PositinsRegPop';
-import { Positionedit } from '../Positions/Positionedit';
+import { AddAttendence } from '../Attendence/AddAttendence';
+import { EditAttendence } from '../Attendence/EditAttendence';
 
 
 export class Attendencedetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Attendances: [], PositioneditShow: false, PositionsRegPop: false
+            Attendances: [], EditAttendenceShow: false, AddAttendenceShow: false
         }
     }
     componentWillMount() {
@@ -17,15 +17,15 @@ export class Attendencedetails extends Component {
     }
 
     refresList() {
-        fetch('https://localhost:59388/api/Attendances')
+        fetch('http://localhost:59388/api/Attendances')
             .then(Response => Response.json())
             .then(data => {
                 this.setState({ Attendances: data });
             });
     }
-    DeletePosition(attendanceId) {
+    DeleteAttendances(attendanceId) {
         if (window.confirm('Are you sure? ')) {
-            fetch('https://localhost:59388/api/Attendances/' + attendanceId, {
+            fetch('http://localhost:59388/api/Attendances/' + attendanceId, {
                 method: 'DELETE',
                 headers: {
                     'Accept': 'application/json',
@@ -37,30 +37,30 @@ export class Attendencedetails extends Component {
     }
 
     render() {
-        const { Attendances, positionId, name, description } = this.state;
-        let addModalClose = () => this.setState({ addModalShow: false });
-        let PositioneditClose = () => this.setState({ PositioneditShow: false });
+        const { Attendances, attendanceId, dateTime, employeeId } = this.state;
+        let AddAttendenceClose = () => this.setState({ AddAttendenceShow: false });
+        let EditAttendenceClose = () => this.setState({ EditAttendenceShow: false });
         return (
             <div className="patientdetailstable">
                 <h4>Attendence Details</h4>
                 <ButtonToolbar>
                     <Button variant='primary'
-                        onClick={() => this.setState({ addModalShow: true })}
+                        onClick={() => this.setState({ AddAttendenceShow: true })}
                     >
                         Add Attendence
                     </Button>
-                    <PositionsRegPop
-                        show={this.state.addModalShow}
-                        onHide={addModalClose}
+                    <AddAttendence
+                        show={this.state.AddAttendenceShow}
+                        onHide={AddAttendenceClose}
                     />
                 </ButtonToolbar>
                 <Table className="mt-4" striped bordered hover size="sm">
                     <thead>
                         <tr>
-                            <th>Employee Id</th>
                             <th>Attendence Id</th>
+                            <th>Employee Id</th>
+                            {/* <th>Employee Name</th> */}
                             <th>Attendence Date</th>
-                            {/* <th>Salary Rate</th> */}
                             <th>Options</th>
 
                         </tr>
@@ -68,35 +68,34 @@ export class Attendencedetails extends Component {
                     <tbody>
                         {Attendances.map(Attendances =>
                             <tr key={Attendances.attendanceId}>
-                                <td>{Attendances.employeeId}</td>
                                 <td>{Attendances.attendanceId}</td>
+                                <td>{Attendances.employeeId}</td>
+                                {/* <td>{Attendances.Employeename}</td> */}
                                 <td>{Attendances.dateTime}</td>
-                                
-                                {/* <td>{Positions.Salaryrate}</td> */}
                                 <td>
 
                                     {/* edit section */}
                                     <ButtonToolbar>
                                         <Button className="mr-2" variant="info"
                                             onClick={() => this.setState({
-                                                PositioneditShow: true,
-                                                positionId: Attendances.attendanceId,
-                                                name: Attendances.dateTime,
-                                                description: Attendances.employee,
-                                                Salaryrate: Attendances.employeeId,
+                                                EditAttendenceShow: true,
+                                                attendanceId: Attendances.attendanceId,
+                                                dateTime: Attendances.dateTime,
+                                                // description: Attendances.employee,s
+                                                employeeId: Attendances.employeeId,
                                             })}
                                         >Edit</Button>
 
                                         {/* Delete Section */}
-                                        <Button className="mr-2" onClick={() => this.DeletePosition(Attendances.attendanceId)} variant="danger">Delete</Button>
+                                        <Button className="mr-2" onClick={() => this.DeleteAttendances(Attendances.attendanceId)} variant="danger">Delete</Button>
 
                                         {/* Getting edit components to the positions */}
-                                        <Positionedit
-                                            show={this.state.PositioneditShow}
-                                            onHide={PositioneditClose}
-                                            positionId={positionId}
-                                            description={description}
-                                            name={name}
+                                        <EditAttendence
+                                            show={this.state.EditAttendenceShow}
+                                            onHide={EditAttendenceClose}
+                                            attendanceId={attendanceId}
+                                            dateTime={dateTime}
+                                            employeeId={employeeId}
                                         />
                                     </ButtonToolbar>
                                 </td>

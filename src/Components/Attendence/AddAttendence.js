@@ -13,7 +13,7 @@ export class AddAttendence extends Component {
     }
 
     componentDidMount(){
-      fetch('https://localhost:44355/api/Attendances')
+      fetch('http://localhost:59388/api/Attendances')
       .then(response => response.json())
       .then(data =>{
         this.setState({Attendances:data});

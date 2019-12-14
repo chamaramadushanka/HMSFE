@@ -61,8 +61,8 @@ export class OvertimeDetails extends Component {
                                <td>{OverTimes.overTimeId}</td>
                                <td>{OverTimes.employeeId}</td>
                                <td>{OverTimes.employeename}</td>
-                               <td>{OverTimes.additionalHours}</td>
-                               <td>{OverTimes.amount}</td>
+                               <td>{OverTimes.additionalHours}hrs</td>
+                               <td>{OverTimes.amount}Rs</td>
                             <td>
                             
                                     {/* edit section */}

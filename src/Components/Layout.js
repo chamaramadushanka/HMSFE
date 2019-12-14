@@ -14,14 +14,14 @@ import PersonPinIcon from '@material-ui/icons/PersonPin';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import PlayForWorkIcon from '@material-ui/icons/PlayForWork';
 import Navbar from 'react-bootstrap/Navbar'
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import { faStreetView } from '@fortawesome/free-solid-svg-icons';
 
 export class Layout extends Component {
@@ -31,175 +31,172 @@ export class Layout extends Component {
 
     let loggedIn = true
 
-    if(token==null){
-      loggedIn= false
+    if (token == null) {
+      loggedIn = false
     }
 
     this.state = {
-       loggedIn
+      loggedIn
     }
   }
 
-  render(){
-    if(this.state.loggedIn===false){
-      return <Redirect to ="/loginform"/>
+  render() {
+    if (this.state.loggedIn === false) {
+      return <Redirect to="/loginform" />
     }
-  return (
-    <div className = "Layout">
-      <Dashboardnavbar />
-      <Wrapper />
-    </div>
-  )
-}
+    return (
+      <div className="Layout">
+        <Dashboardnavbar />
+        <Wrapper />
+      </div>
+    )
+  }
 }
 
 
-class Dashboardnavbar extends Component{
+class Dashboardnavbar extends Component {
   constructor(props) {
     super(props)
     this.logout = this.logout.bind(this);
 
     const token = localStorage.getItem("token")
-    
+
     let loggedIn = true
-    
-    if(token==null){
-      loggedIn= false
+
+    if (token == null) {
+      loggedIn = false
     }
-    
+
     this.state = {
       loggedIn
     }
   }
   logout() {
     localStorage.removeItem("token")
-    if(this.state.loggedIn===false){
-      return <Redirect to ="/loginform"/>
-    }
   }
-  
-  render(){
-  return (
-    <div>
-      <nav class="navbar navbar-expand navbar-dark bg-dark  navbar-fixed-top">
-        <a class="navbar-brand mr-1" href="index.html">PMS - EcoBiz </a>
-        <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <MenuIcon className = "ml-5"/>
-        </button>
-        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-          <div class="input-group">
-          <div style={{
+
+  render() {
+    return (
+      <div>
+        <nav class="navbar navbar-expand navbar-dark bg-dark  navbar-fixed-top">
+          <a class="navbar-brand mr-1" href="index.html">PMS - EcoBiz </a>
+          <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+            <MenuIcon className="ml-5" />
+          </button>
+          <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group">
+              <div style={{
                 display: 'flex',
                 alignItems: 'center'
-                }}>
-            <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-            <div class="input-group-append srchbtn">
-            <button class="btn btn-primary btn-xs" type="button">
-                <SearchIcon/>
-              </button></div>
+              }}>
+                <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                <div class="input-group-append srchbtn">
+                  <button class="btn btn-primary btn-xs" type="button">
+                    <SearchIcon />
+                  </button></div>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
 
-        <ul class="navbar-nav ml-auto ml-md-0">
-          <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <NotificationsActiveIcon/>
-              <span class="badge badge-danger">9+</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <EmailIcon/>
-              <span class="badge badge-danger">7</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <AccountCircleIcon/>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-              <a class="dropdown-item" href="#">Settings</a>
-              <a class="dropdown-item" href="#">Activity Log</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#" onClick={this.logout} data-toggle="modal" data-target="#logoutModal">Logout</a>
-            </div>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  );
-}
+          <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <NotificationsActiveIcon />
+                <span class="badge badge-danger">9+</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <EmailIcon />
+                <span class="badge badge-danger">7</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <AccountCircleIcon />
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="#">Activity Log</a>
+                <div class="dropdown-divider"></div>
+                <Link class="dropdown-item" to ="/loginform" onClick={this.logout}>Logout</Link>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    );
+  }
 }
 
 
 function Wrapper() {
   return (
     <div>
-    
+
       <div id="wrapper">
-      
+
         {/* <!-- Sidebar --> */}
         <ul class="sidebar navbar-nav">
           <li class="nav-item active">
-              <span><Link class = "nav-link" to="/Dashboard" style={{ textDecoration: 'none', color: 'white' }}>
+            <span><Link class="nav-link" to="/Dashboard" style={{ textDecoration: 'none', color: 'white' }}>
               <div style={{
                 display: 'flex',
                 alignItems: 'center'
-                }}><DashboardIcon style={{ fontSize: 18},{padding:2}}/>Dashboard</div></Link>
-              </span>
+              }}><DashboardIcon style={{ fontSize: 18 }, { padding: 2 }} />Dashboard</div></Link>
+            </span>
           </li>
           <li class="nav-item dropdown" >
             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              
-              <span><StreetviewIcon style={{ fontSize: 25},{padding:1}}/>Employee</span>
+
+              <span><StreetviewIcon style={{ fontSize: 25 }, { padding: 1 }} />Employee</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
               {/* <Link className = "dropdown-item" to="/PatientRegistration">patient Register</Link> */}
-              <Link className = "dropdown-item" to="/EmployeeDetails">EmployeeDetails</Link>
-              <Link className = "dropdown-item" to="/OvertimeDetails">Overtime</Link>
-              <a class="dropdown-item" href="forgot-password.html">Cash Advance</a>
+              <Link className="dropdown-item" to="/EmployeeDetails">EmployeeDetails</Link>
+              <Link className="dropdown-item" to="/OvertimeDetails">Overtime</Link>
+              <a class="dropdown-item" href="forgot-password.html">Payments</a>
               <a class="dropdown-item" href="forgot-password.html">Shedules</a>
             </div>
-            <span><Link class = "nav-link" to="/Attendencedetails" style={{ textDecoration: 'none', backgroundColor: "#000"}}>
+            <span><Link class="nav-link" to="/Attendencedetails" style={{ textDecoration: 'none', backgroundColor: "#000" }}>
               <div style={{
                 display: 'flex',
                 alignItems: 'center'
-                }}><DateRangeIcon style={{ fontSize: 18},{padding:2}}/>Attendence</div></Link>
-              </span>
+              }}><DateRangeIcon style={{ fontSize: 18 }, { padding: 2 }} />Attendence</div></Link>
+            </span>
           </li>
-          
+
           <li class="nav-item">
             <a class="nav-link" href="charts.html">
               <i class="fas fa-fw fa-chart-area"></i>
-              <span><PlayForWorkIcon style={{ fontSize: 25},{padding:1}}/>Deductions</span>
-              </a>
+              <span><PlayForWorkIcon style={{ fontSize: 25 }, { padding: 1 }} />Deductions</span>
+            </a>
           </li>
-          
+
           <li class="nav-item">
-              <span><Link class = "nav-link" to="/Positions" style={{ textDecoration: 'none' }}>
+            <span><Link class="nav-link" to="/Positions" style={{ textDecoration: 'none' }}>
               <div style={{
                 display: 'flex',
                 alignItems: 'center'
-                }}><PersonPinIcon style={{ fontSize: 25},{padding:1}}/>Positions</div></Link>
-              </span>
+              }}><PersonPinIcon style={{ fontSize: 25 }, { padding: 1 }} />Positions</div></Link>
+            </span>
           </li>
         </ul>
-         <Main/> 
+        <Main />
       </div>
-      
+
     </div>
   )
 }
