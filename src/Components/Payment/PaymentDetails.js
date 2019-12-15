@@ -31,7 +31,7 @@ import { PaymentEdit} from './PaymentEdit';
        let PaymentEditClose =() => this.setState({PaymentEditShow:false});
        return (
            <div className = "patientdetailstable">
-               <h4>Employee Details</h4>
+               <h4>Payment Details</h4>
                <ButtonToolbar>
                     <Button variant = 'primary'
                     onClick ={()=>this.setState({PaymentsRegPopShow:true})}
