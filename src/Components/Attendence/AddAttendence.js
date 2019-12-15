@@ -20,14 +20,11 @@ export class AddAttendence extends Component {
       });
     }
 
-    SnackbarClose = (event)=>{
-    this.setState({Snackbaropen:false,
-    })
-  }
+   
 
     handleSubmit(event){
       event.preventDefault();
-        fetch('https://localhost:44355/api/Attendances',{
+        fetch('http://localhost:59388/api/Attendances',{
           method:'POST',
           headers: {
             'Accept': 'application/json',
@@ -35,12 +32,9 @@ export class AddAttendence extends Component {
             'Access-Control-Allow-Origin': '*',
           },
           body:JSON.stringify({
-            // positionId:null,
-            // attendanceId:event.attendanceId.value,
-            dateTime:event.target.dateTime.value,
-            employee:event.target.employee.value,
-            employeeId:event.target.employeeId.value
-            // Salaryrate:event.target.Address.value,
+            inTime:event.target.inTime.value,
+            outTime:event.target.outTime.value,
+            employeeId:new Number(event.target.employeeId.value)
             
           })
         })
@@ -48,10 +42,9 @@ export class AddAttendence extends Component {
         .then((result)=>
         {
              alert("Added Successfully")
-            this.setState({SnackbarOpen:true, Snackbarmsg:"Added Successfully"})
         },
         (error)=>{
-          this.setState({SnackbarOpen:true, Snackbarmsg:"failed"})
+          alert("Added Failed")
         })
     }
     render() {
@@ -76,31 +69,35 @@ export class AddAttendence extends Component {
                 <Col sm= {6}>
                     <Form onSubmit ={this.handleSubmit}>
 
-                        <Form.Group controlId ="dateTime">
-                        <Form.Label> Attendence Date</Form.Label>
+
+                    <Form.Group controlId ="employeeId">
+                        <Form.Label>Employee Id</Form.Label>
+                        <Form .Control
+                        type ="text"
+                        name = "employeeId"
+                        placeholder ="Employee Id"
+                        />
+                        </Form.Group>
+
+
+                        <Form.Group controlId ="inTime">
+                        <Form.Label> In Time</Form.Label>
                         <Form .Control
                         type ="Date"
                         name = "dateTime"
                         required
-                        placeholder ="Attendence Date"
+                        placeholder ="In Time"
                         />
                         </Form.Group>
                         
-                        <Form.Group controlId ="employee">
-                        <Form.Label>Employee Id</Form.Label>
-                        <Form .Control
-                        type ="text"
-                        name = "employee"
-                        placeholder ="Description"
-                        />
-                        </Form.Group>
+                        
 
-                        <Form.Group controlId ="Salaryrate">
-                        <Form.Label>Salary Rate</Form.Label>
+                        <Form.Group controlId ="outTime">
+                        <Form.Label>out Time</Form.Label>
                         <Form .Control
-                        type ="number"
-                        name = "Salaryrate"
-                        placeholder ="Salary Rate"
+                        type ="Date"
+                        name = "outTime"
+                        placeholder ="out Time"
                         />
                         </Form.Group>
                         

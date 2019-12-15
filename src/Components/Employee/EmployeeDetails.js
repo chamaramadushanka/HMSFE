@@ -25,9 +25,9 @@ class  EmployeeDetails extends Component {
 //    componentDidUpdate(){
 //     this.refresList();
 // }
-DeleteEmployee(id){
+DeleteEmployee(employeeId){
     if(window.confirm('Are you sure? ')){
-      fetch('http://localhost:59388/api/employees/' + id,{
+      fetch('http://localhost:59388/api/employees/' + employeeId,{
         method:'DELETE',
         headers: {
           'Accept': 'application/json',
@@ -39,7 +39,7 @@ DeleteEmployee(id){
   }
 
    render() {
-       const {Employees,employeeId,FirstName,LastName,Address,Birthdate,ContactInfo,Gender,RegistrationNo,CreatedOn,positionName} = this.state;
+       const {Employees,employeeId,FirstName,LastName,Address,birthdate,ContactInfo,gender,RegistrationNo,CreatedOn,positionName} = this.state;
        let addModalClose =() => this.setState({addModalShow:false});
        let EmployeeeditClose =() => this.setState({EmployeeeditShow:false});
        return (
@@ -66,7 +66,9 @@ DeleteEmployee(id){
                            <th>Address</th>
                            <th>Contact Info</th>
                            <th>Created On</th>
+                           <th>Gender</th>
                            <th>Options</th>
+                           
                        </tr>
                    </thead>
                    <tbody>
@@ -79,21 +81,21 @@ DeleteEmployee(id){
                                <td>{Employees.address}</td>
                                <td>{Employees.contactInfo}</td>
                                <td>{Employees.createdOn}</td>
+                               <td>{Employees.gender}</td>
                                
-                               {/* <td>{Employees.Birthdate}</td> */}
                                <td>
                                    <ButtonToolbar>
                                        <Button className = "mr-2" variant ="info"
                                     onClick={()=>this.setState({EmployeeeditShow:true,
-                                        id:Employees.employeeId,
+                                        employeeId:Employees.employeeId,
                                         FirstName:Employees.firstName,
                                         LastName:Employees.lastName,
                                         RegistrationNo:Employees.registrationNo,
                                         ContactInfo:Employees.contactInfo,
                                         CreatedOn:Employees.CreatedOn,
                                         Address:Employees.address,
-                                        // Birthdate:Employees.Birthdate,
-                                        Gender:Employees.gender,
+                                        birthdate:Employees.birthdate,
+                                        gender:Employees.gender,
                                         PosiitionId:Employees.positionName
                                         })}
                                        >Edit</Button>
@@ -102,15 +104,15 @@ DeleteEmployee(id){
                                        <Employeeedit
                                            show={this.state.EmployeeeditShow}
                                             onHide ={EmployeeeditClose}
-                                            id  = {employeeId}
+                                            employeeId  = {employeeId}
                                             FirstName  = {FirstName}
                                             LastName = {LastName}
                                             RegistrationNo = {RegistrationNo}
                                             ContactInfo = {ContactInfo}
                                             CreatedOn = {CreatedOn}
                                             Address = {Address}
-                                            Gender = {Gender}
-                                            Birthdate = {Birthdate}
+                                            gender = {gender}
+                                            birthdate = {birthdate}
                                             PoistionId = {positionName}
                                        />
                                    </ButtonToolbar>

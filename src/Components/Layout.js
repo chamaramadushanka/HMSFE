@@ -15,6 +15,7 @@ import DateRangeIcon from '@material-ui/icons/DateRange';
 import PlayForWorkIcon from '@material-ui/icons/PlayForWork';
 import Navbar from 'react-bootstrap/Navbar'
 import { Redirect } from 'react-router-dom';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 
 import {
   BrowserRouter as Router,
@@ -167,10 +168,9 @@ function Wrapper() {
               {/* <Link className = "dropdown-item" to="/PatientRegistration">patient Register</Link> */}
               <Link className="dropdown-item" to="/EmployeeDetails">EmployeeDetails</Link>
               <Link className="dropdown-item" to="/OvertimeDetails">Overtime</Link>
-              <a class="dropdown-item" href="forgot-password.html">Payments</a>
               <a class="dropdown-item" href="forgot-password.html">Shedules</a>
             </div>
-            <span><Link class="nav-link" to="/Attendencedetails" style={{ textDecoration: 'none', backgroundColor: "#000" }}>
+            <span><Link class="nav-link" to="/Attendencedetails" style={{ textDecoration: 'none'}}>
               <div style={{
                 display: 'flex',
                 alignItems: 'center'
@@ -191,6 +191,14 @@ function Wrapper() {
                 display: 'flex',
                 alignItems: 'center'
               }}><PersonPinIcon style={{ fontSize: 25 }, { padding: 1 }} />Positions</div></Link>
+            </span>
+          </li>
+          <li class="nav-item">
+            <span><Link class="nav-link" to="/PaymentDetails" style={{ textDecoration: 'none' }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center'
+              }}><MonetizationOnIcon style={{ fontSize: 25 }, { padding: 1 }} />Payments</div></Link>
             </span>
           </li>
         </ul>

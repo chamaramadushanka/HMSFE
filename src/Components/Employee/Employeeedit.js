@@ -7,9 +7,18 @@ import IconButton from '@material-ui/core/IconButton';
 export class Employeeedit extends Component {
   constructor(props) {
       super(props);
-      this.state = {Snackbaropen:false,Snackbarmsg:''}
+      this.state = {positions:[],Snackbaropen:false,Snackbarmsg:''}
       this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  componentDidMount(){
+    fetch('http://localhost:59388/api/positions')
+    .then(response => response.json())
+    .then(data =>{
+      this.setState({positions:data});
+    });
+  }
+
   SnackbarClose = (event)=>{
     this.setState({Snackbaropen:false,})
   }
@@ -24,16 +33,16 @@ export class Employeeedit extends Component {
           'Access-Control-Allow-Origin': '*',
         },
         body:JSON.stringify({
-          id:event.target.EmployeeId.value,
+          StringEmployeeId:event.target.employeeId.value,
           firstName:event.target.FirstName.value,
           lastName:event.target.LastName.value,
           address:event.target.Address.value,
-          birthdate:event.target.Birthdate.value,
           contactInfo:event.target.ContactInfo.value,
-          gender:event.target.Gender.value,
           registrationNo:event.target.RegistrationNo.value,
-          createdOn:event.target.CreatedOn.value,
-          poistionId:event.target.PoistionId.value,
+          PositionId:event.target.PositionId.value,
+          birthdate:event.target.birthdate.value,
+          gender:event.target.Gender.value,
+          createdOn:event.target.createdOn.value,
         })
       })
       .then(res=>res.json())
@@ -84,17 +93,20 @@ export class Employeeedit extends Component {
             <Col sm= {6}>
                 <Form onSubmit ={this.handleSubmit}>
 
-                    <Form.Group controlId ="EmployeeId">
+                    
+
+
+                    <Form.Group controlId="employeeId">
                     <Form.Label> Employee Id</Form.Label>
-                    <Form .Control
-                    type ="text"
-                    name = "EmployeeId"
-                    required
-                    disable
-                    defaultValue ={this.props.id}
-                    placeholder ="EmployeeId"
+                    <Form.Control
+                      type="text"
+                      name="employeeId"
+                      required
+                      disabled
+                      defaultValue={this.props.employeeId}
+                      placeholder="EmployeeId"
                     />
-                    </Form.Group>
+                  </Form.Group>
 
                     <Form.Group controlId ="FirstName">
                     <Form.Label> First Name</Form.Label>
@@ -130,25 +142,6 @@ export class Employeeedit extends Component {
                     />
                     </Form.Group>
 
-                    <Form.Group controlId ="Birthdate">
-                    <Form.Label>Birth Date</Form.Label>
-                    <Form .Control
-                    type ="Date"
-                    name = "Birthdate"
-                    defaultValue ={this.props.Birthdate}
-                    placeholder ="Birth date"
-                    />
-                    </Form.Group>
-
-                    <Form.Group controlId ="Gender">
-                    <Form.Label>Gender</Form.Label>
-                    <Form .Control
-                    type ="text"
-                    defaultValue ={this.props.Gender}
-                    name = "Gender"
-                    placeholder ="Gender"
-                    />
-                    </Form.Group>
 
                     <Form.Group controlId ="ContactInfo">
                     <Form.Label>contact Info</Form.Label>
@@ -157,6 +150,27 @@ export class Employeeedit extends Component {
                     name = "ContactInfo"
                     defaultValue ={this.props.ContactInfo}
                     placeholder ="contact Info"
+                    />
+                    </Form.Group>
+
+                    <Form.Group controlId ="Gender">
+                    <Form.Label>Gender</Form.Label>
+                    <Form .Control
+                    type ="text"
+                    name = "Gender"
+                    disabled
+                    defaultValue ={this.props.Gender}
+                    placeholder ="Gender"
+                    />
+                    </Form.Group>
+
+                    <Form.Group controlId ="birthdate">
+                    <Form.Label>Birth Date</Form.Label>
+                    <Form .Control
+                    type ="date"
+                    name = "birthdate"
+                    defaultValue ={this.props.birthdate}
+                    placeholder ="Birth date"
                     />
                     </Form.Group>
                     
@@ -169,30 +183,32 @@ export class Employeeedit extends Component {
                     placeholder ="Registration No"
                     />
 
-                    <Form.Group controlId ="CreatedOn">
+                    <Form.Group controlId ="createdOn">
                     <Form.Label>Created On</Form.Label>
                     <Form .Control
-                    type ="Date"
-                    name = "CreatedOn"
-                    defaultValue ={this.props.CreatedOn}
+                    type ="date"
+                    disabled
+                    name = "createdOn"
+                    defaultValue ={this.props.createdOn}
                     placeholder ="Created On"
                     />
                     </Form.Group>
-
-                    <Form.Group controlId ="PoistionId">
-                    <Form.Label>Position Id</Form.Label>
-                    <Form .Control
-                    type ="int"
-                    name = "PoistionId"
-                    defaultValue ={this.props.PoistionId}
-                    placeholder ="Position Id"
-                    />
+                    
+                    <Form.Group controlId="PositionId">
+                      <Form.Label>Position Id</Form.Label>
+                      <Form.Control as="select">
+                        {this.state.positions.map(position =>
+                          <option key={position.positionId} value={position.positionId}>{position.name}</option>
+                        )}
+                      </Form.Control>
                     </Form.Group>
+
                     </Form.Group>
                     <Form.Group>
                     <Button variant ="primary" type = "submit">
                     Update Employee</Button>
                     </Form.Group>
+                    
                 </Form>
             </Col>
         </Row>

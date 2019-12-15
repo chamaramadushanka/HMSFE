@@ -13,7 +13,7 @@ function App() {
       return (
             <Router>
                   <Route exact path="/Loginform" component={LoginForm}></Route>
-                  <Route path="/" component={Layout}></Route>
+                  <Route  path="/" component={Layout}></Route>
             </Router>
       );
 }

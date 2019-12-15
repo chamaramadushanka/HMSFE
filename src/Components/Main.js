@@ -10,6 +10,7 @@ import { Positions } from './Positions/Positions';
 import { AddAttendence } from './Attendence/AddAttendence';
 import { Attendencedetails } from './Attendence/Attendencedetails';
 import {OvertimeDetails} from './Overtime/OvertimeDetails';
+import {PaymentDetails} from './Payment/PaymentDetails';
 
 const Main = () =>(
   <Switch>
@@ -20,6 +21,7 @@ const Main = () =>(
     <Route path="/AddAttendence" component={AddAttendence}></Route>
     <Route path="/Attendencedetails" component={Attendencedetails}></Route>
     <Route path="/OvertimeDetails" component={OvertimeDetails}></Route>
+    <Route path="/PaymentDetails" component={PaymentDetails}></Route>
   </Switch>
 )
 

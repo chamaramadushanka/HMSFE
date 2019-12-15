@@ -23,18 +23,7 @@ export class Attendencedetails extends Component {
                 this.setState({ Attendances: data });
             });
     }
-    DeleteAttendances(attendanceId) {
-        if (window.confirm('Are you sure? ')) {
-            fetch('http://localhost:59388/api/Attendances/' + attendanceId, {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                }
-            })
-        }
-    }
+    
 
     render() {
         const { Attendances, attendanceId, dateTime, employeeId } = this.state;
@@ -59,8 +48,8 @@ export class Attendencedetails extends Component {
                         <tr>
                             <th>Attendence Id</th>
                             <th>Employee Id</th>
-                            {/* <th>Employee Name</th> */}
-                            <th>Attendence Date</th>
+                            <th>In Time</th>
+                            <th>Out time</th>
                             <th>Options</th>
 
                         </tr>
@@ -70,8 +59,8 @@ export class Attendencedetails extends Component {
                             <tr key={Attendances.attendanceId}>
                                 <td>{Attendances.attendanceId}</td>
                                 <td>{Attendances.employeeId}</td>
-                                {/* <td>{Attendances.Employeename}</td> */}
-                                <td>{Attendances.dateTime}</td>
+                                <td>{Attendances.inTime}</td>
+                                <td>{Attendances.outTime}</td>
                                 <td>
 
                                     {/* edit section */}
@@ -80,6 +69,8 @@ export class Attendencedetails extends Component {
                                             onClick={() => this.setState({
                                                 EditAttendenceShow: true,
                                                 attendanceId: Attendances.attendanceId,
+                                                inTime: Attendances.inTime,
+                                                outTime: Attendances.outTime,
                                                 dateTime: Attendances.dateTime,
                                                 // description: Attendances.employee,s
                                                 employeeId: Attendances.employeeId,
@@ -87,8 +78,7 @@ export class Attendencedetails extends Component {
                                         >Edit</Button>
 
                                         {/* Delete Section */}
-                                        <Button className="mr-2" onClick={() => this.DeleteAttendances(Attendances.attendanceId)} variant="danger">Delete</Button>
-
+   
                                         {/* Getting edit components to the positions */}
                                         <EditAttendence
                                             show={this.state.EditAttendenceShow}

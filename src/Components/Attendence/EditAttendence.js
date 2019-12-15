@@ -24,7 +24,7 @@ export class EditAttendence extends Component {
           'Access-Control-Allow-Origin': '*',
         },
         body:JSON.stringify({
-          id:event.target.EmployeeId.value,
+          // id:event.target.EmployeeId.value,
           firstName:event.target.FirstName.value,
           lastName:event.target.LastName.value,
           address:event.target.Address.value,
@@ -40,10 +40,9 @@ export class EditAttendence extends Component {
       .then((result)=>
       {
           alert("Added Successfully")
-          this.setState({SnackbarOpen:true, Snackbarmsg:result})
       },
       (error)=>{
-        this.setState({SnackbarOpen:true, Snackbarmsg:"failed"})
+        alert("Something Wrong please check")
       }) 
   }
 
@@ -90,8 +89,8 @@ export class EditAttendence extends Component {
                     type ="text"
                     name = "EmployeeId"
                     required
-                    disable
-                    defaultValue ={this.props.id}
+                    disabled
+                    defaultValue ={this.props.EmployeeId}
                     placeholder ="EmployeeId"
                     />
                     </Form.Group>
