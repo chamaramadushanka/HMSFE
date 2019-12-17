@@ -33,7 +33,7 @@ export class Employeeedit extends Component {
           'Access-Control-Allow-Origin': '*',
         },
         body:JSON.stringify({
-          StringEmployeeId:event.target.employeeId.value,
+          EmployeeId:event.target.employeeId.value,
           firstName:event.target.FirstName.value,
           lastName:event.target.LastName.value,
           address:event.target.Address.value,
@@ -49,10 +49,9 @@ export class Employeeedit extends Component {
       .then((result)=>
       {
           alert("Added Successfully")
-          this.setState({SnackbarOpen:true, Snackbarmsg:result})
       },
       (error)=>{
-        this.setState({SnackbarOpen:true, Snackbarmsg:"failed"})
+        alert("Added Failed")
       }) 
   }
 
@@ -92,10 +91,6 @@ export class Employeeedit extends Component {
         <Row>
             <Col sm= {6}>
                 <Form onSubmit ={this.handleSubmit}>
-
-                    
-
-
                     <Form.Group controlId="employeeId">
                     <Form.Label> Employee Id</Form.Label>
                     <Form.Control

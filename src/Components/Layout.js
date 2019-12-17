@@ -16,6 +16,9 @@ import PlayForWorkIcon from '@material-ui/icons/PlayForWork';
 import Navbar from 'react-bootstrap/Navbar'
 import { Redirect } from 'react-router-dom';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import PaymentIcon from '@material-ui/icons/Payment';
+
+import { useAuth0 } from "../react-auth0-spa";
 
 import {
   BrowserRouter as Router,
@@ -23,28 +26,33 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { faStreetView } from '@fortawesome/free-solid-svg-icons';
 
-export class Layout extends Component {
-  constructor(props) {
-    super(props)
-    const token = localStorage.getItem("token")
 
-    let loggedIn = true
 
-    if (token == null) {
-      loggedIn = false
-    }
 
-    this.state = {
-      loggedIn
-    }
-  }
+const Layout = () => {
+//  export class Layout extends Component {
+   
+  
+//   constructor(props) {
+//     super(props)
+//     const token = localStorage.getItem("token")
 
-  render() {
-    if (this.state.loggedIn === false) {
-      return <Redirect to="/loginform" />
-    }
+//     let loggedIn = true
+
+//     if (token == null) {
+//       loggedIn = false
+//     }
+
+//     this.state = {
+//       loggedIn
+//     }
+//   }
+
+  //  render() {
+    // if (this.state.loggedIn === false) {
+    //   return <Redirect to="/loginform" />
+    // }
     return (
       <div className="Layout">
         <Dashboardnavbar />
@@ -52,31 +60,32 @@ export class Layout extends Component {
       </div>
     )
   }
-}
+//  }
 
+const Dashboardnavbar = () => {
+// class Dashboardnavbar extends Component {
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  // constructor(props) {
+    // super(props)
+    // this.logout = this.logout.bind(this);
 
-class Dashboardnavbar extends Component {
-  constructor(props) {
-    super(props)
-    this.logout = this.logout.bind(this);
+    // const token = localStorage.getItem("token")
 
-    const token = localStorage.getItem("token")
+    // let loggedIn = true
 
-    let loggedIn = true
+    // if (token == null) {
+    //   loggedIn = false
+    // }
 
-    if (token == null) {
-      loggedIn = false
-    }
+    // this.state = {
+    //   loggedIn
+    // }
+  // }
+  // logout() {
+  //   localStorage.removeItem("token")
+  // }
 
-    this.state = {
-      loggedIn
-    }
-  }
-  logout() {
-    localStorage.removeItem("token")
-  }
-
-  render() {
+  // render() {
     return (
       <div>
         <nav class="navbar navbar-expand navbar-dark bg-dark  navbar-fixed-top">
@@ -132,7 +141,7 @@ class Dashboardnavbar extends Component {
                 <a class="dropdown-item" href="#">Settings</a>
                 <a class="dropdown-item" href="#">Activity Log</a>
                 <div class="dropdown-divider"></div>
-                <Link class="dropdown-item" to ="/loginform" onClick={this.logout}>Logout</Link>
+                <Link class="dropdown-item" to ="/loginform" onClick={() => logout()}>Logout</Link>
               </div>
             </li>
           </ul>
@@ -140,7 +149,7 @@ class Dashboardnavbar extends Component {
       </div>
     );
   }
-}
+// }
 
 
 function Wrapper() {
@@ -165,10 +174,8 @@ function Wrapper() {
               <span><StreetviewIcon style={{ fontSize: 25 }, { padding: 1 }} />Employee</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-              {/* <Link className = "dropdown-item" to="/PatientRegistration">patient Register</Link> */}
               <Link className="dropdown-item" to="/EmployeeDetails">EmployeeDetails</Link>
               <Link className="dropdown-item" to="/OvertimeDetails">Overtime</Link>
-              <a class="dropdown-item" href="forgot-password.html">Shedules</a>
             </div>
             <span><Link class="nav-link" to="/Attendencedetails" style={{ textDecoration: 'none'}}>
               <div style={{
@@ -199,6 +206,14 @@ function Wrapper() {
                 display: 'flex',
                 alignItems: 'center'
               }}><MonetizationOnIcon style={{ fontSize: 25 }, { padding: 1 }} />Payments</div></Link>
+            </span>
+          </li>
+          <li class="nav-item">
+            <span><Link class="nav-link" to="/PaymentDetails" style={{ textDecoration: 'none' }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center'
+              }}><PaymentIcon style={{ fontSize: 25 }, { padding: 1 }} />Salaries</div></Link>
             </span>
           </li>
         </ul>

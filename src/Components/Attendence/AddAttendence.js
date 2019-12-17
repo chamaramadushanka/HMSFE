@@ -1,8 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
 import {Modal,Button,Row,Col, Form} from 'react-bootstrap';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
+import TimeField from 'react-simple-timefield';
 
 
 export class AddAttendence extends Component {
@@ -90,8 +89,7 @@ export class AddAttendence extends Component {
                         />
                         </Form.Group>
                         
-                        
-
+                  
                         <Form.Group controlId ="outTime">
                         <Form.Label>out Time</Form.Label>
                         <Form .Control
@@ -99,6 +97,16 @@ export class AddAttendence extends Component {
                         name = "outTime"
                         placeholder ="out Time"
                         />
+                        </Form.Group>
+
+                        <Form.Group controlId ="outTime">
+                        <Form.Label>xxxxxxxxxxxx</Form.Label>
+                        <Form .Control
+                        type ="Date"
+                        name = "outTime"
+                        placeholder ="out Time"
+                        />
+                       
                         </Form.Group>
                         
                         <Form.Group>

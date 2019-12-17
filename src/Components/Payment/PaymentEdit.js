@@ -5,7 +5,7 @@ export class PaymentEdit extends Component {
     render(){
     return (
         <div>
-            sdfds
+            
         </div>
     )
     }
