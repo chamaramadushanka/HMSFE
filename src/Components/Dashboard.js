@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom';
+import {MyChart} from './Charts/chart';
+
 
 export class Dashboard extends Component {
   constructor(props) {
@@ -34,10 +36,10 @@ export class Dashboard extends Component {
                     <div class="card-body-icon">
                       <i class="fas fa-fw fa-comments"></i>
                     </div>
-                    <div class="mr-5">Total Employees</div>
+                    <div class="mr-5">sdfdsfsdf</div>
                   </div>
                   <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">More Info</span>
+                    <span class="float-left">Total Employees</span>
                     <span class="float-right">
                       <i class="fas fa-angle-right"></i>
                     </span>
@@ -50,10 +52,10 @@ export class Dashboard extends Component {
                     <div class="card-body-icon">
                       <i class="fas fa-fw fa-list"></i>
                     </div>
-                    <div class="mr-5">On TIme Percentage</div>
+                    <div class="mr-5">dsfsdfdsf</div>
                   </div>
                   <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">More Info</span>
+                    <span class="float-left">On TIme Percentage</span>
                     <span class="float-right">
                       <i class="fas fa-angle-right"></i>
                     </span>
@@ -66,10 +68,10 @@ export class Dashboard extends Component {
                     <div class="card-body-icon">
                       <i class="fas fa-fw fa-shopping-cart"></i>
                     </div>
-                    <div class="mr-5">On Time Today</div>
+                    <div class="mr-5">xxxxxxxx</div>
                   </div>
                   <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">More Info</span>
+                    <span class="float-left">On Time Today</span>
                     <span class="float-right">
                       <i class="fas fa-angle-right"></i>
                     </span>
@@ -82,10 +84,10 @@ export class Dashboard extends Component {
                     <div class="card-body-icon">
                       <i class="fas fa-fw fa-life-ring"></i>
                     </div>
-                    <div class="mr-5">Late Percentage</div>
+                    <div class="mr-5">xxxxxx</div>
                   </div>
                   <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">More Info</span>
+                    <span class="float-left">Late Percentage</span>
                     <span class="float-right">
                       <i class="fas fa-angle-right"></i>
                     </span>
@@ -99,45 +101,13 @@ export class Dashboard extends Component {
             <div class="card mb-3">
               <div class="card-header">
                 <i class="fas fa-table"></i>
-                Data Table Example</div>
+                Analysis</div>
               <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                      </tr>
-                    </thead>
-                    <tfoot>
-                      <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                      </tr>
-                    </tfoot>
-                    <tbody>
-                    
-                      <tr>
-                        <td>Donna Snider</td>
-                        <td>Customer Support</td>
-                        <td>New York</td>
-                        <td>27</td>
-                        <td>2011/01/25</td>
-                        <td>$112,000</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <div className="piechart">
+                {/* <MyChart/> */}
                 </div>
               </div>
-              <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+              <div class="card-footer small text-muted">EcoBoiz - Performance Analysis</div>
             </div>
 
           </div>
@@ -147,7 +117,7 @@ export class Dashboard extends Component {
           <footer class="sticky-footer">
             <div class="container my-auto">
               <div class="copyright text-center my-auto">
-                <span>Copyright © Your Website 2019</span>
+                <span>Copyright © EcoBoiz 2019</span>
               </div>
             </div>
           </footer>

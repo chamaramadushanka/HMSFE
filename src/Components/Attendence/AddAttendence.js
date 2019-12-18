@@ -2,6 +2,7 @@ import React from 'react';
 import {Component} from 'react';
 import {Modal,Button,Row,Col, Form} from 'react-bootstrap';
 import TimeField from 'react-simple-timefield';
+// import Time from './TimeWrapper';
 
 
 export class AddAttendence extends Component {
@@ -31,7 +32,7 @@ export class AddAttendence extends Component {
             'Access-Control-Allow-Origin': '*',
           },
           body:JSON.stringify({
-            inTime:event.target.inTime.value,
+            inTime:event.target.inTime.value + this.state.date,
             outTime:event.target.outTime.value,
             employeeId:new Number(event.target.employeeId.value)
             
@@ -50,7 +51,6 @@ export class AddAttendence extends Component {
         return (
           <div className ="container">
           
-            {/* Pop up Modal Start */}
             <Modal
               {...this.props}
               size="lg"
@@ -60,6 +60,7 @@ export class AddAttendence extends Component {
               <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
                   Add Attendence
+                  
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
@@ -87,6 +88,7 @@ export class AddAttendence extends Component {
                         required
                         placeholder ="In Time"
                         />
+                        <Clock/>
                         </Form.Group>
                         
                   
@@ -97,6 +99,8 @@ export class AddAttendence extends Component {
                         name = "outTime"
                         placeholder ="out Time"
                         />
+                        
+                        <Clock date = { new Date()}/>
                         </Form.Group>
 
                         <Form.Group controlId ="outTime">
@@ -124,6 +128,37 @@ export class AddAttendence extends Component {
     </div>
         )
     }
+}
+
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <p><b>It is {this.state.date.toLocaleTimeString()}.</b></p>
+      </div>
+    );
+  }
 }
 
 export default AddAttendence

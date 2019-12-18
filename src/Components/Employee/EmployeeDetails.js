@@ -39,7 +39,7 @@ DeleteEmployee(employeeId){
   }
 
    render() {
-       const {Employees,employeeId,FirstName,LastName,Address,birthdate,ContactInfo,gender,RegistrationNo,createdOn,positionName} = this.state;
+       const {Employees,employeeId,FirstName,LastName,Address,contactInfo,gender,RegistrationNo,createdOn,positionName} = this.state;
        let addModalClose =() => this.setState({addModalShow:false});
        let EmployeeeditClose =() => this.setState({EmployeeeditShow:false});
        return (
@@ -91,10 +91,9 @@ DeleteEmployee(employeeId){
                                         FirstName:Employees.firstName,
                                         LastName:Employees.lastName,
                                         RegistrationNo:Employees.registrationNo,
-                                        ContactInfo:Employees.contactInfo,
+                                        contactInfo:Employees.contactInfo,
                                         createdOn:Employees.createdOn,
                                         Address:Employees.address,
-                                        birthdate:Employees.birthdate,
                                         gender:Employees.gender,
                                         PosiitionId:Employees.positionName
                                         })}
@@ -108,11 +107,10 @@ DeleteEmployee(employeeId){
                                             FirstName  = {FirstName}
                                             LastName = {LastName}
                                             RegistrationNo = {RegistrationNo}
-                                            ContactInfo = {ContactInfo}
+                                            contactInfo = {contactInfo}
                                             createdOn = {createdOn}
                                             Address = {Address}
                                             gender = {gender}
-                                            birthdate = {birthdate}
                                             PoistionId = {positionName}
                                        />
                                    </ButtonToolbar>

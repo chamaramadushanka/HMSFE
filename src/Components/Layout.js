@@ -31,28 +31,7 @@ import {
 
 
 const Layout = () => {
-//  export class Layout extends Component {
-   
-  
-//   constructor(props) {
-//     super(props)
-//     const token = localStorage.getItem("token")
 
-//     let loggedIn = true
-
-//     if (token == null) {
-//       loggedIn = false
-//     }
-
-//     this.state = {
-//       loggedIn
-//     }
-//   }
-
-  //  render() {
-    // if (this.state.loggedIn === false) {
-    //   return <Redirect to="/loginform" />
-    // }
     return (
       <div className="Layout">
         <Dashboardnavbar />
@@ -60,32 +39,10 @@ const Layout = () => {
       </div>
     )
   }
-//  }
 
 const Dashboardnavbar = () => {
-// class Dashboardnavbar extends Component {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
-  // constructor(props) {
-    // super(props)
-    // this.logout = this.logout.bind(this);
 
-    // const token = localStorage.getItem("token")
-
-    // let loggedIn = true
-
-    // if (token == null) {
-    //   loggedIn = false
-    // }
-
-    // this.state = {
-    //   loggedIn
-    // }
-  // }
-  // logout() {
-  //   localStorage.removeItem("token")
-  // }
-
-  // render() {
     return (
       <div>
         <nav class="navbar navbar-expand navbar-dark bg-dark  navbar-fixed-top">

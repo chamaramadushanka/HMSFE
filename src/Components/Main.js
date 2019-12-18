@@ -15,7 +15,7 @@ import {PaymentDetails} from './Payment/PaymentDetails';
 const Main = () =>(
   <Switch>
     {/* <Route exact path="/Loginform" component={Loginform}></Route> */}
-    <Route path="/Dashboard" component={Dashboard}></Route>
+    <Route exact path="/" component={Dashboard}></Route>
     <Route path="/EmployeeDetails" component={EmployeeDetails}></Route>
     <Route path="/Positions" component={Positions}></Route>
     <Route path="/AddAttendence" component={AddAttendence}></Route>

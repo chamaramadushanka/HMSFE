@@ -33,16 +33,14 @@ export class Employeeedit extends Component {
           'Access-Control-Allow-Origin': '*',
         },
         body:JSON.stringify({
-          EmployeeId:event.target.employeeId.value,
+          StringEmployeeId:event.target.StringEmployeeId.value,
           firstName:event.target.FirstName.value,
           lastName:event.target.LastName.value,
           address:event.target.Address.value,
-          contactInfo:event.target.ContactInfo.value,
+          contactInfo:event.target.contactInfo.value,
           registrationNo:event.target.RegistrationNo.value,
           PositionId:event.target.PositionId.value,
-          birthdate:event.target.birthdate.value,
-          gender:event.target.Gender.value,
-          createdOn:event.target.createdOn.value,
+          gender:event.target.gender.value,
         })
       })
       .then(res=>res.json())
@@ -91,11 +89,11 @@ export class Employeeedit extends Component {
         <Row>
             <Col sm= {6}>
                 <Form onSubmit ={this.handleSubmit}>
-                    <Form.Group controlId="employeeId">
+                    <Form.Group controlId="StringEmployeeId">
                     <Form.Label> Employee Id</Form.Label>
                     <Form.Control
                       type="text"
-                      name="employeeId"
+                      name="StringEmployeeId"
                       required
                       disabled
                       defaultValue={this.props.employeeId}
@@ -138,36 +136,28 @@ export class Employeeedit extends Component {
                     </Form.Group>
 
 
-                    <Form.Group controlId ="ContactInfo">
+                    <Form.Group controlId ="contactInfo">
                     <Form.Label>contact Info</Form.Label>
                     <Form .Control
                     type ="number"
-                    name = "ContactInfo"
-                    defaultValue ={this.props.ContactInfo}
+                    name = "contactInfo"
+                    defaultValue ={this.props.contactInfo}
                     placeholder ="contact Info"
                     />
                     </Form.Group>
 
-                    <Form.Group controlId ="Gender">
+                    <Form.Group controlId ="gender">
                     <Form.Label>Gender</Form.Label>
                     <Form .Control
                     type ="text"
-                    name = "Gender"
+                    name = "gender"
                     disabled
-                    defaultValue ={this.props.Gender}
+                    defaultValue ={this.props.gender}
                     placeholder ="Gender"
                     />
                     </Form.Group>
 
-                    <Form.Group controlId ="birthdate">
-                    <Form.Label>Birth Date</Form.Label>
-                    <Form .Control
-                    type ="date"
-                    name = "birthdate"
-                    defaultValue ={this.props.birthdate}
-                    placeholder ="Birth date"
-                    />
-                    </Form.Group>
+                    
                     
                     <Form.Group controlId ="RegistrationNo">
                     <Form.Label>Registration No</Form.Label>
@@ -178,19 +168,8 @@ export class Employeeedit extends Component {
                     placeholder ="Registration No"
                     />
 
-                    <Form.Group controlId ="createdOn">
-                    <Form.Label>Created On</Form.Label>
-                    <Form .Control
-                    type ="date"
-                    disabled
-                    name = "createdOn"
-                    defaultValue ={this.props.createdOn}
-                    placeholder ="Created On"
-                    />
-                    </Form.Group>
-                    
                     <Form.Group controlId="PositionId">
-                      <Form.Label>Position Id</Form.Label>
+                      <Form.Label>Position</Form.Label>
                       <Form.Control as="select">
                         {this.state.positions.map(position =>
                           <option key={position.positionId} value={position.positionId}>{position.name}</option>
