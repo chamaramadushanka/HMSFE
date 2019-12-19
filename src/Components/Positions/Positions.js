@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import { PositionsRegPop } from './PositinsRegPop';
-import { Positionedit } from './Positionedit';
+// import { Positionedit } from './Positionedit';
 
 
 export class Positions extends Component {
@@ -78,7 +78,7 @@ export class Positions extends Component {
 
                                     {/* edit section */}
                                     <ButtonToolbar>
-                                        <Button className="mr-2" variant="info"
+                                        {/* <Button className="mr-2" variant="info"
                                             onClick={() => this.setState({
                                                 PositioneditShow: true,
                                                 positionId: Positions.positionId,
@@ -86,19 +86,19 @@ export class Positions extends Component {
                                                 description: Positions.description,
                                                 Salaryrate: Positions.Salaryrate,
                                             })}
-                                        >Edit</Button>
+                                        >Edit</Button> */}
 
                                         {/* Delete Section */}
                                         <Button className="mr-2" onClick={() => this.DeletePosition(Positions.positionId)} variant="danger">Delete</Button>
 
                                         {/* Getting edit components to the positions */}
-                                        <Positionedit
+                                        {/* <Positionedit
                                             show={this.state.PositioneditShow}
                                             onHide={PositioneditClose}
                                             positionId={positionId}
                                             description={description}
                                             name={name}
-                                        />
+                                        /> */}
                                     </ButtonToolbar>
                                 </td>
                             </tr>

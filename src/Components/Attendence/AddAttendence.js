@@ -52,8 +52,8 @@ export class AddAttendence extends Component {
           body:JSON.stringify({
             // date:event.target.date.value,
             inTime:event.target.date.value +"T"+ event.target.inTime.value ,
-            // outTime:event.target.date.value +"T"+ event.target.outTime.value,
-            employeeId:new Number(event.target.employeeId.value)
+            outTime:event.target.date.value +"T"+ event.target.inTime.value,
+            employeeId:Number(event.target.employeeId.value)
           })
         })
         .then(res=>res.json())

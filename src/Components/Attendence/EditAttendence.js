@@ -43,7 +43,7 @@ export class EditAttendence extends Component {
           'Access-Control-Allow-Origin': '*',
         },
         body:JSON.stringify({
-            attendanceId:Number(event.target.attendanceId.value),
+            attendanceId:parseInt(event.target.attendanceId.value),
             inTime:event.target.inTime.value,
             outTime:event.target.date.value +"T"+ event.target.outTime.value ,
             employeeId:new Number(event.target.employeeId.value)
