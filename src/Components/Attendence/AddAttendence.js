@@ -10,6 +10,7 @@ export class AddAttendence extends Component {
         super(props);
         this.state = {Attendances:[],Snackbaropen:false,Snackbarmsg:''}
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {date: new Date()};
     }
 
     componentDidMount(){
@@ -17,6 +18,23 @@ export class AddAttendence extends Component {
       .then(response => response.json())
       .then(data =>{
         this.setState({Attendances:data});
+      });
+    }
+
+    componentDidMount() {
+      this.timerID = setInterval(
+        () => this.tick(),
+        1000
+      );
+    }
+  
+    componentWillUnmount() {
+      clearInterval(this.timerID);
+    }
+  
+    tick() {
+      this.setState({
+        date: new Date()
       });
     }
 
@@ -32,10 +50,10 @@ export class AddAttendence extends Component {
             'Access-Control-Allow-Origin': '*',
           },
           body:JSON.stringify({
-            inTime:event.target.inTime.value + this.state.date,
-            outTime:event.target.outTime.value,
+            // date:event.target.date.value,
+            inTime:event.target.date.value +"T"+ event.target.inTime.value ,
+            // outTime:event.target.date.value +"T"+ event.target.outTime.value,
             employeeId:new Number(event.target.employeeId.value)
-            
           })
         })
         .then(res=>res.json())
@@ -48,6 +66,7 @@ export class AddAttendence extends Component {
         })
     }
     render() {
+      
         return (
           <div className ="container">
           
@@ -59,7 +78,7 @@ export class AddAttendence extends Component {
             >
               <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                  Add Attendence
+                  Intime Attendence
                   
                 </Modal.Title>
               </Modal.Header>
@@ -68,54 +87,59 @@ export class AddAttendence extends Component {
             <Row>
                 <Col sm= {6}>
                     <Form onSubmit ={this.handleSubmit}>
-
+                    <Form.Group controlId ="attendenceId">
+                        <Form.Label>Attendence Id</Form.Label>
+                        <Form .Control
+                        type ="text"
+                        disabled
+                        name = "attendenceId"
+                        placeholder ="Attendence Id"
+                        />
+                        </Form.Group>
 
                     <Form.Group controlId ="employeeId">
                         <Form.Label>Employee Id</Form.Label>
                         <Form .Control
                         type ="text"
                         name = "employeeId"
+                        required
                         placeholder ="Employee Id"
                         />
                         </Form.Group>
 
+                        <Form.Group controlId ="date">
+                        <Form.Label> Date</Form.Label>
+                        <Form .Control
+                        type ="Date"
+                        name = "date"
+                        required
+                        placeholder ="Date"
+                        />
+                        </Form.Group>
 
                         <Form.Group controlId ="inTime">
                         <Form.Label> In Time</Form.Label>
                         <Form .Control
-                        type ="Date"
-                        name = "dateTime"
-                        required
-                        placeholder ="In Time"
+                        type ="text"
+                        value = {this.state.date.toLocaleTimeString()}
+                        name = {this.state.date.toLocaleTimeString()}
+                        placeholder ={this.state.date.toLocaleTimeString()}
                         />
-                        <Clock/>
-                        </Form.Group>
-                        
-                  
-                        <Form.Group controlId ="outTime">
-                        <Form.Label>out Time</Form.Label>
-                        <Form .Control
-                        type ="Date"
-                        name = "outTime"
-                        placeholder ="out Time"
-                        />
-                        
-                        <Clock date = { new Date()}/>
                         </Form.Group>
 
-                        <Form.Group controlId ="outTime">
-                        <Form.Label>xxxxxxxxxxxx</Form.Label>
+                        {/* <Form.Group controlId ="outTime">
+                        <Form.Label> Out Time</Form.Label>
                         <Form .Control
-                        type ="Date"
-                        name = "outTime"
-                        placeholder ="out Time"
+                        type ="text"
+                        name = {this.state.date.toLocaleTimeString()}
+                        value = {this.state.date.toLocaleTimeString()}
+                        placeholder ={this.state.date.toLocaleTimeString()}
                         />
-                       
-                        </Form.Group>
+                        </Form.Group> */}
                         
                         <Form.Group>
                         <Button variant ="primary" type = "submit">
-                        Add Employee</Button>
+                        Add Attendence</Button>
                         </Form.Group>
                     </Form>
                 </Col>
@@ -130,35 +154,5 @@ export class AddAttendence extends Component {
     }
 }
 
-class Clock extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {date: new Date()};
-  }
-  componentDidMount() {
-    this.timerID = setInterval(
-      () => this.tick(),
-      1000
-    );
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
-
-  tick() {
-    this.setState({
-      date: new Date()
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <p><b>It is {this.state.date.toLocaleTimeString()}.</b></p>
-      </div>
-    );
-  }
-}
 
 export default AddAttendence

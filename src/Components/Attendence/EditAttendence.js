@@ -3,20 +3,39 @@ import {Component} from 'react';
 import {Modal,Button,Row,Col, Form} from 'react-bootstrap';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
+import moment from 'moment'; 
 
 export class EditAttendence extends Component {
   constructor(props) {
       super(props);
       this.state = {Snackbaropen:false,Snackbarmsg:''}
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.state = {date: new Date()};
   }
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
   SnackbarClose = (event)=>{
     this.setState({Snackbaropen:false,})
   }
 
   handleSubmit(event){
     event.preventDefault();
-      fetch('http://localhost:59388/api/employees',{
+      fetch('http://localhost:59388/api/Attendances',{
         method:'PUT',
         headers: {
           'Accept': 'application/json',
@@ -24,25 +43,19 @@ export class EditAttendence extends Component {
           'Access-Control-Allow-Origin': '*',
         },
         body:JSON.stringify({
-          // id:event.target.EmployeeId.value,
-          firstName:event.target.FirstName.value,
-          lastName:event.target.LastName.value,
-          address:event.target.Address.value,
-          birthdate:event.target.Birthdate.value,
-          contactInfo:event.target.ContactInfo.value,
-          gender:event.target.Gender.value,
-          registrationNo:event.target.RegistrationNo.value,
-          createdOn:event.target.CreatedOn.value,
-          poistionId:event.target.PoistionId.value,
+            attendanceId:Number(event.target.attendanceId.value),
+            inTime:event.target.inTime.value,
+            outTime:event.target.date.value +"T"+ event.target.outTime.value ,
+            employeeId:new Number(event.target.employeeId.value)
         })
       })
       .then(res=>res.json())
       .then((result)=>
-      {
-          alert("Added Successfully")
+      { 
+      alert("Added Successfully")
       },
       (error)=>{
-        alert("Something Wrong please check")
+        alert("Updated Successfully")
       }) 
   }
 
@@ -74,7 +87,7 @@ export class EditAttendence extends Component {
         >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-              Edit Employee
+              Out Time
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -82,112 +95,62 @@ export class EditAttendence extends Component {
         <Row>
             <Col sm= {6}>
                 <Form onSubmit ={this.handleSubmit}>
-
-                    <Form.Group controlId ="EmployeeId">
-                    <Form.Label> Employee Id</Form.Label>
+                    {/* AttendenceID */}
+                    <Form.Group controlId ="attendanceId">
+                    <Form.Label> Attendance Id </Form.Label>
                     <Form .Control
                     type ="text"
-                    name = "EmployeeId"
-                    required
+                    name = "attendanceId"
                     disabled
-                    defaultValue ={this.props.EmployeeId}
+                    defaultValue ={this.props.attendanceId}
                     placeholder ="EmployeeId"
                     />
                     </Form.Group>
 
-                    <Form.Group controlId ="FirstName">
-                    <Form.Label> First Name</Form.Label>
+                    {/* EmployeeID */}
+                    <Form.Group controlId ="employeeId">
+                    <Form.Label> Employee Id</Form.Label>
                     <Form .Control
                     type ="text"
-                    name = "FirstName"
+                    name = "employeeId"
                     required
-                    
-                    defaultValue ={this.props.FirstName}
-                    placeholder ="First Name"
+                    disabled
+                    defaultValue ={this.props.employeeId}
+                    placeholder ="Employee Id"
                     />
-                    </Form.Group>
+                    <Form.Group controlId ="date">
+                        <Form.Label> Date</Form.Label>
+                        <Form .Control
+                        type ="Date"
+                        name = "date"
+                        required
+                        placeholder ="Date"
+                        />
+                        </Form.Group>
 
-                    <Form.Group controlId ="LastName">
-                    <Form.Label>Last Name</Form.Label>
-                    <Form .Control
-                    type ="text"
-                    name = "LastName"
-                    required
-                    defaultValue ={this.props.LastName}
-                    placeholder ="Last Name"
-                    />
                     </Form.Group>
-
-                    <Form.Group controlId ="Address">
-                    <Form.Label>Address</Form.Label>
-                    <Form .Control
-                    type ="text"
-                    required
-                    defaultValue ={this.props.Address}
-                    name = "Address"
-                    placeholder ="Address"
-                    />
-                    </Form.Group>
-
-                    <Form.Group controlId ="Birthdate">
-                    <Form.Label>Birth Date</Form.Label>
-                    <Form .Control
-                    type ="Date"
-                    name = "Birthdate"
-                    defaultValue ={this.props.Birthdate}
-                    placeholder ="Birth date"
-                    />
-                    </Form.Group>
-
-                    <Form.Group controlId ="Gender">
-                    <Form.Label>Gender</Form.Label>
-                    <Form .Control
-                    type ="text"
-                    defaultValue ={this.props.Gender}
-                    name = "Gender"
-                    placeholder ="Gender"
-                    />
-                    </Form.Group>
-
-                    <Form.Group controlId ="ContactInfo">
-                    <Form.Label>contact Info</Form.Label>
-                    <Form .Control
-                    type ="number"
-                    name = "ContactInfo"
-                    defaultValue ={this.props.ContactInfo}
-                    placeholder ="contact Info"
-                    />
-                    </Form.Group>
-                    
-                    <Form.Group controlId ="RegistrationNo">
-                    <Form.Label>Registration No</Form.Label>
-                    <Form .Control
-                    type ="text"
-                    name = "RegistrationNo"
-                    defaultValue ={this.props.RegistrationNo}
-                    placeholder ="Registration No"
-                    />
-
-                    <Form.Group controlId ="CreatedOn">
-                    <Form.Label>Created On</Form.Label>
-                    <Form .Control
-                    type ="Date"
-                    name = "CreatedOn"
-                    defaultValue ={this.props.CreatedOn}
-                    placeholder ="Created On"
-                    />
-                    </Form.Group>
-
-                    <Form.Group controlId ="PoistionId">
-                    <Form.Label>Position Id</Form.Label>
+                    <Form.Group controlId ="inTime">
+                    <Form.Label>In Time</Form.Label>
                     <Form .Control
                     type ="int"
-                    name = "PoistionId"
-                    defaultValue ={this.props.PoistionId}
-                    placeholder ="Position Id"
+                    name = "inTime"
+                    defaultValue ={this.props.inTime}
+                    placeholder ="InTime"
                     />
                     </Form.Group>
+
+                    <Form.Group controlId ="outTime">
+                    <Form.Label>Out Time</Form.Label>
+                    <Form .Control
+                    type ="text"
+                    value = {this.state.date.toLocaleTimeString()}
+                    name = {this.state.date.toLocaleTimeString()}
+                    placeholder ={this.state.date.toLocaleTimeString()}
+                    />
                     </Form.Group>
+
+                    
+
                     <Form.Group>
                     <Button variant ="primary" type = "submit">
                     Update Employee</Button>

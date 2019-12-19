@@ -26,7 +26,7 @@ export class Attendencedetails extends Component {
     
 
     render() {
-        const { Attendances, attendanceId, dateTime, employeeId } = this.state;
+        const { Attendances, attendanceId, inTime, outTime,employeeId } = this.state;
         let AddAttendenceClose = () => this.setState({ AddAttendenceShow: false });
         let EditAttendenceClose = () => this.setState({ EditAttendenceShow: false });
         return (
@@ -36,7 +36,7 @@ export class Attendencedetails extends Component {
                     <Button variant='primary'
                         onClick={() => this.setState({ AddAttendenceShow: true })}
                     >
-                        Add Attendence
+                        Intime Attendence
                     </Button>
                     <AddAttendence
                         show={this.state.AddAttendenceShow}
@@ -71,11 +71,10 @@ export class Attendencedetails extends Component {
                                                 attendanceId: Attendances.attendanceId,
                                                 inTime: Attendances.inTime,
                                                 outTime: Attendances.outTime,
-                                                dateTime: Attendances.dateTime,
-                                                // description: Attendances.employee,s
+                                                // dateTime: Attendances.dateTime,
                                                 employeeId: Attendances.employeeId,
                                             })}
-                                        >Edit</Button>
+                                        >Out Time</Button>
 
                                         {/* Delete Section */}
    
@@ -84,7 +83,9 @@ export class Attendencedetails extends Component {
                                             show={this.state.EditAttendenceShow}
                                             onHide={EditAttendenceClose}
                                             attendanceId={attendanceId}
-                                            dateTime={dateTime}
+                                            inTime = {inTime}
+                                            outTime = {outTime}
+                                            // dateTime={dateTime}
                                             employeeId={employeeId}
                                         />
                                     </ButtonToolbar>

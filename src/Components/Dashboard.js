@@ -8,6 +8,7 @@ export class Dashboard extends Component {
     super(props)
   
     this.state = {
+      
     }
   }
   
@@ -36,7 +37,7 @@ export class Dashboard extends Component {
                     <div class="card-body-icon">
                       <i class="fas fa-fw fa-comments"></i>
                     </div>
-                    <div class="mr-5">sdfdsfsdf</div>
+                    <div class="mr-5"><h2>40</h2></div>
                   </div>
                   <a class="card-footer text-white clearfix small z-1" href="#">
                     <span class="float-left">Total Employees</span>
@@ -52,7 +53,7 @@ export class Dashboard extends Component {
                     <div class="card-body-icon">
                       <i class="fas fa-fw fa-list"></i>
                     </div>
-                    <div class="mr-5">dsfsdfdsf</div>
+                    <div class="mr-5"><h2>85%</h2></div>
                   </div>
                   <a class="card-footer text-white clearfix small z-1" href="#">
                     <span class="float-left">On TIme Percentage</span>
@@ -68,7 +69,7 @@ export class Dashboard extends Component {
                     <div class="card-body-icon">
                       <i class="fas fa-fw fa-shopping-cart"></i>
                     </div>
-                    <div class="mr-5">xxxxxxxx</div>
+                    <div class="mr-5"><h2>34</h2></div>
                   </div>
                   <a class="card-footer text-white clearfix small z-1" href="#">
                     <span class="float-left">On Time Today</span>
@@ -84,7 +85,7 @@ export class Dashboard extends Component {
                     <div class="card-body-icon">
                       <i class="fas fa-fw fa-life-ring"></i>
                     </div>
-                    <div class="mr-5">xxxxxx</div>
+                    <div class="mr-5"><h2>15%</h2></div>
                   </div>
                   <a class="card-footer text-white clearfix small z-1" href="#">
                     <span class="float-left">Late Percentage</span>

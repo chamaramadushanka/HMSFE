@@ -39,7 +39,7 @@ DeleteEmployee(employeeId){
   }
 
    render() {
-       const {Employees,employeeId,FirstName,LastName,Address,contactInfo,gender,RegistrationNo,createdOn,positionName} = this.state;
+       const {Employees,employeeId,firstName,lastName,address,contactInfo,gender,registrationNo,createdOn,positionName,StringEmployeeId} = this.state;
        let addModalClose =() => this.setState({addModalShow:false});
        let EmployeeeditClose =() => this.setState({EmployeeeditShow:false});
        return (
@@ -88,30 +88,32 @@ DeleteEmployee(employeeId){
                                        <Button className = "mr-2" variant ="info"
                                     onClick={()=>this.setState({EmployeeeditShow:true,
                                         employeeId:Employees.employeeId,
-                                        FirstName:Employees.firstName,
-                                        LastName:Employees.lastName,
-                                        RegistrationNo:Employees.registrationNo,
+                                        firstName:Employees.firstName,
+                                        lastName:Employees.lastName,
+                                        registrationNo:Employees.registrationNo,
                                         contactInfo:Employees.contactInfo,
                                         createdOn:Employees.createdOn,
-                                        Address:Employees.address,
+                                        address:Employees.address,
                                         gender:Employees.gender,
                                         PosiitionId:Employees.positionName
                                         })}
                                        >Edit</Button>
 
                                        <Button className="mr-2"  onClick = {()=>this.DeleteEmployee(Employees.employeeId)} variant ="danger">Delete</Button>
+                                       
                                        <Employeeedit
                                            show={this.state.EmployeeeditShow}
                                             onHide ={EmployeeeditClose}
                                             employeeId  = {employeeId}
-                                            FirstName  = {FirstName}
-                                            LastName = {LastName}
-                                            RegistrationNo = {RegistrationNo}
+                                            firstName  = {firstName}
+                                            lastName = {lastName}
+                                            registrationNo = {registrationNo}
                                             contactInfo = {contactInfo}
                                             createdOn = {createdOn}
-                                            Address = {Address}
+                                            address = {address}
                                             gender = {gender}
                                             PoistionId = {positionName}
+                                            StringEmployeeId = {employeeId}
                                        />
                                    </ButtonToolbar>
                                </td>

@@ -17,6 +17,8 @@ import Navbar from 'react-bootstrap/Navbar'
 import { Redirect } from 'react-router-dom';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import PaymentIcon from '@material-ui/icons/Payment';
+import LoginForm from './Loginform';
+
 
 import { useAuth0 } from "../react-auth0-spa";
 
@@ -98,7 +100,9 @@ const Dashboardnavbar = () => {
                 <a class="dropdown-item" href="#">Settings</a>
                 <a class="dropdown-item" href="#">Activity Log</a>
                 <div class="dropdown-divider"></div>
+                
                 <Link class="dropdown-item" to ="/loginform" onClick={() => logout()}>Logout</Link>
+                
               </div>
             </li>
           </ul>
@@ -126,11 +130,11 @@ function Wrapper() {
             </span>
           </li>
           <li class="nav-item dropdown" >
-            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-              <span><StreetviewIcon style={{ fontSize: 25 }, { padding: 1 }} />Employee</span>
+              <span><StreetviewIcon style={{ fontSize: 25 }, { padding: 1 }} />Employee </span>
             </a>
-            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <div class="dropdown-menu">
               <Link className="dropdown-item" to="/EmployeeDetails">EmployeeDetails</Link>
               <Link className="dropdown-item" to="/OvertimeDetails">Overtime</Link>
             </div>
@@ -142,12 +146,7 @@ function Wrapper() {
             </span>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-              <i class="fas fa-fw fa-chart-area"></i>
-              <span><PlayForWorkIcon style={{ fontSize: 25 }, { padding: 1 }} />Deductions</span>
-            </a>
-          </li>
+          
 
           <li class="nav-item">
             <span><Link class="nav-link" to="/Positions" style={{ textDecoration: 'none' }}>

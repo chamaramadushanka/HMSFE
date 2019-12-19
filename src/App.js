@@ -27,7 +27,7 @@ function App() {
       return (
             <div className="loginpage">
             <Router>
-            <Route exact path="/Loginform" component={LoginForm}></Route>
+            <Route exact path="/loginform" component={LoginForm}></Route>
             </Router>
                   {/* {isAuthenticated &&  */}
                   <Router>

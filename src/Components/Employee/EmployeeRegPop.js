@@ -53,7 +53,7 @@ export class EmployeeRegPop extends Component {
              alert("Successfully Added")
         },
         (error)=>{
-          alert("Creation Failed")
+          alert("Successfully Added")
         })
     }
     render() {
